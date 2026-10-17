@@ -1,0 +1,39 @@
+:root {
+    /* Exact Eyedropped Palette from Screenshot */
+    --mc-bg-chat: #18181b;           /* Main chat & top header */
+    --mc-bg-sidebars: #121215;       /* Server list, channels, members, user panel */
+    --mc-bg-deep: #0c0c0e;           /* Embeds, search bar, note input, codeblocks */
+    --mc-bg-popout: #141417;         /* Floating user popout body */
+    
+    --mc-pill-channel: #25252b;      /* Active channel pill (#plugin-releases) */
+    --mc-accent-blue: #3875d7;       /* Active member highlight (Gibbu) & Follow pill */
+    --mc-boost-purple: #6b52ae;      /* Server boost progress bar */
+    
+    --mc-radius: 6px;
+}
+
+.theme-dark, html.theme-dark {
+    /* Main Surfaces */
+    --background-primary: var(--mc-bg-chat) !important;
+    --background-secondary: var(--mc-bg-sidebars) !important;
+    --background-secondary-alt: var(--mc-bg-sidebars) !important;
+    --background-tertiary: var(--mc-bg-sidebars) !important;
+    --background-floating: var(--mc-bg-popout) !important;
+
+    /* 2025/2026 Discord Redesign Variable Sync */
+    --bg-base-primary: var(--mc-bg-chat) !important;
+    --bg-base-secondary: var(--mc-bg-sidebars) !important;
+    --bg-base-tertiary: var(--mc-bg-sidebars) !important;
+    --bg-surface-overlay: var(--mc-bg-popout) !important;
+    --bg-surface-raised: var(--mc-bg-deep) !important;
+    --chat-background-default: var(--mc-bg-chat) !important;
+
+    /* Chat Input & Follow Bar */
+    --channeltextarea-background: #202026 !important;
+
+    /* Flat Minimalist Borders & Zero Lag Shadows */
+    --elevation-low: none !important;
+    --elevation-medium: none !important;
+    --elevation-stroke: none !important;
+    --border-subtle: rgba(255, 255, 255, 0.04) !important;
+}

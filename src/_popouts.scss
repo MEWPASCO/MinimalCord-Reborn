@@ -1,0 +1,22 @@
+/* User Popout Card & Rounded Pill Roles */
+div[role="dialog"][aria-label*="User Profile"],
+[class*="userPopout"] {
+    background-color: var(--mc-bg-popout) !important;
+    border-radius: 10px !important;
+    overflow: hidden;
+
+    /* Rounded Pill Role Tags */
+    [aria-label="Roles"] [role="listitem"],
+    [class*="role_"] {
+        background-color: #202026 !important;
+        border-radius: 20px !important;
+        border: none !important;
+        padding: 4px 10px !important;
+    }
+
+    /* Recessed Dark Note Input */
+    textarea[aria-label="Note"] {
+        background-color: var(--mc-bg-deep) !important;
+        border-radius: var(--mc-radius) !important;
+    }
+}

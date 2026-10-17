@@ -1,0 +1,10 @@
+/* Keep Settings Sidebar & Content Area Matched to Main Window */
+[aria-label="User Settings"],
+[aria-label="Server Settings"] {
+    [role="tablist"] {
+        background-color: var(--mc-bg-sidebars) !important;
+    }
+    [role="tabpanel"] {
+        background-color: var(--mc-bg-chat) !important;
+    }
+}

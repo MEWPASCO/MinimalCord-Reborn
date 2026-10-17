@@ -1,0 +1,13 @@
+/* Unify Server List, Channel List, and Bottom User Area into one seamless dark surface */
+nav[aria-label="Servers sidebar"],
+[aria-label="Channels"],
+section[aria-label="User area"] {
+    background-color: var(--mc-bg-sidebars) !important;
+    border: none !important;
+}
+
+/* Active Channel Pill (#plugin-releases look) */
+[aria-label="Channels"] [role="listitem"] a[aria-current="page"] {
+    background-color: var(--mc-pill-channel) !important;
+    border-radius: var(--mc-radius) !important;
+}
