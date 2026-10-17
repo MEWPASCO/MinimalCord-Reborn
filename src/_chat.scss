@@ -1,20 +1,37 @@
-/* Seamless Top Channel Header & Deep Black Search Bar */
+/* 1. Main Chat Background & Top Header */
+main[class^="chatContent_"],
 section[aria-label="Channel header"] {
     background-color: var(--mc-bg-chat) !important;
     box-shadow: none !important;
+    border-bottom: none !important;
+}
 
-    [role="search"] {
+/* 2. Deep Recessed Search Bar in Top Right */
+section[aria-label="Channel header"] [role="search"] [class^="searchBar_"] {
+    background-color: var(--mc-bg-deep) !important;
+    border-radius: 4px !important;
+    border: none !important;
+}
+
+/* 3. Recessed Pitch-Dark Embeds, Audio Players & Codeblocks */
+main {
+    article[class^="embedFull_"],
+    div[class^="wrapperAudio_"],
+    code.hljs {
         background-color: var(--mc-bg-deep) !important;
-        border-radius: 4px !important;
+        border-radius: var(--mc-radius) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.03) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.03) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
     }
 }
 
-/* Recessed Pitch-Dark Embeds (like BetterAudioPlayer & UserTags in screenshot) */
-article[class*="embed"],
-[class*="embedFull"] {
-    background-color: var(--mc-bg-deep) !important;
-    border-radius: var(--mc-radius) !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.03) !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.03) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+/* 4. Bottom "Follow Channel" Bar & Chat Input Box */
+main form {
+    [class^="channelTextArea_"],
+    [class^="wrapper_"] {
+        background-color: #202026 !important;
+        border-radius: var(--mc-radius) !important;
+        border: none !important;
+    }
 }

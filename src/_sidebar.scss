@@ -1,13 +1,33 @@
-/* Unify Server List, Channel List, and Bottom User Area into one seamless dark surface */
+/* 1. Seamless Unified Left Sidebars (Servers, Channels, User Area) */
 nav[aria-label="Servers sidebar"],
-[aria-label="Channels"],
-section[aria-label="User area"] {
+nav[aria-label="Servers sidebar"] [class^="scroller_"],
+nav[aria-label="Channels"],
+#channels,
+section[aria-label="User area"],
+section[aria-label="User area"] [class^="container_"] {
     background-color: var(--mc-bg-sidebars) !important;
     border: none !important;
 }
 
-/* Active Channel Pill (#plugin-releases look) */
-[aria-label="Channels"] [role="listitem"] a[aria-current="page"] {
-    background-color: var(--mc-pill-channel) !important;
-    border-radius: var(--mc-radius) !important;
+/* 2. Top-Left Server Header ("BetterDiscord") */
+nav[aria-label="Channels"] header {
+    background-color: var(--mc-bg-sidebars) !important;
+    box-shadow: none !important;
+}
+
+/* 3. Server Boost Bar (Purple gradient like in screenshot) */
+nav[aria-label="Channels"] [class^="progressBar_"] {
+    background: linear-gradient(90deg, #5865f2, #8045dd) !important;
+}
+
+/* 4. Channel Items & Active Selected Pill (#plugin-releases) */
+#channels [role="listitem"] {
+    [class^="link_"] {
+        border-radius: var(--mc-radius) !important;
+    }
+
+    a[aria-current="page"],
+    &[class*="selected_"] [class^="link_"] {
+        background-color: var(--mc-pill-channel) !important;
+    }
 }
