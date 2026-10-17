@@ -1,10 +1,33 @@
-/* Keep Settings Sidebar & Content Area Matched to Main Window */
-[aria-label="User Settings"],
-[aria-label="Server Settings"] {
-    [role="tablist"] {
+/* 1. Settings Sidebar & Main Content Area */
+div[aria-label*="_SETTINGS"],
+div[class^="layer_"] [class^="standardSidebarView_"] {
+    background-color: var(--mc-bg-chat) !important;
+
+    /* Left Navigation Sidebar */
+    [class^="sidebarRegion_"],
+    [class^="sidebarRegionScroller_"] {
         background-color: var(--mc-bg-sidebars) !important;
     }
-    [role="tabpanel"] {
+
+    /* Right Content Panel */
+    [class^="contentRegion_"],
+    [class^="contentRegionScroller_"] {
         background-color: var(--mc-bg-chat) !important;
+    }
+
+    /* Selected Settings Tab Pill */
+    nav [role="tab"][aria-selected="true"] {
+        background-color: var(--mc-pill-channel) !important;
+        border-radius: var(--mc-radius) !important;
+    }
+
+    /* Recessed "My Account" Card & Settings Boxes */
+    [class^="accountProfileCard_"],
+    [class^="background_"],
+    [class^="fieldList_"],
+    [class^="cardPrimary_"] {
+        background-color: var(--mc-bg-deep) !important;
+        border-radius: 8px !important;
+        border: none !important;
     }
 }
