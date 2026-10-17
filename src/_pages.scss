@@ -46,3 +46,10 @@ div[class^="container_"][aria-label="Friends"] {
         }
     }
 }
+
+/* Top Windows Titlebar & Root Background Layer */
+div.bg__960e4,
+div.bar_c38106,
+div.systemBar_c38106 {
+    background-color: var(--mc-bg-sidebars) !important;
+}

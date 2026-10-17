@@ -1,37 +1,64 @@
-/* 1. Main Chat Background & Top Header */
-main[class^="chatContent_"],
-section[aria-label="Channel header"] {
-    background-color: var(--mc-bg-chat) !important;
-    box-shadow: none !important;
-    border-bottom: none !important;
-}
+/* ==========================================================================
+   CHAT MODULE (Matched to Wolfy's Live DOM Dump)
+   ========================================================================== */
 
-/* 2. Deep Recessed Search Bar in Top Right */
-section[aria-label="Channel header"] [role="search"] [class^="searchBar_"] {
-    background-color: var(--mc-bg-deep) !important;
-    border-radius: 4px !important;
+/* 1. Main Page & Chat Container */
+div.page__5e434,
+div.chat_f75fb0,
+div.content_f75fb0,
+main.chatContent_f75fb0,
+div.messagesWrapper__36d07,
+div.scroller__36d07 {
+    background-color: var(--mc-bg-chat) !important;
     border: none !important;
 }
 
-/* 3. Recessed Pitch-Dark Embeds, Audio Players & Codeblocks */
-main {
-    article[class^="embedFull_"],
-    div[class^="wrapperAudio_"],
+/* 2. Top Channel Header (section.title_f75fb0.container__9293f) */
+div.subtitleContainer_f75fb0,
+section.title_f75fb0.container__9293f {
+    background-color: var(--mc-bg-chat) !important;
+    box-shadow: none !important;
+    border-bottom: none !important;
+
+    /* Top-Right Recessed Search Box */
+    div.search__49676,
+    div.search_c322aa,
+    [class*="searchBar"] {
+        background-color: var(--mc-bg-deep) !important;
+        border-radius: 4px !important;
+        border: none !important;
+    }
+}
+
+/* 3. Kill the Visual-Refresh Bottom Chat Gradient Shadow */
+div.chatGradient__36d07,
+div.chatGradientBase__36d07 {
+    display: none !important;
+}
+
+/* 4. Bottom Chat Input Box (div.channelTextArea_f75fb0.channelTextArea__74017) */
+form.form_f75fb0 {
+    background-color: var(--mc-bg-chat) !important;
+
+    div.channelTextArea_f75fb0,
+    div.channelTextArea__74017,
+    [class*="scrollableContainer"] {
+        background-color: var(--mc-bg-input) !important;
+        border-radius: var(--mc-radius) !important;
+        border: none !important;
+    }
+}
+
+/* 5. Recessed Pitch-Dark Embeds, Audio Players & Codeblocks */
+main.chatContent_f75fb0 {
+    article[class*="embed"],
+    div[class*="embedFull"],
+    div[class*="wrapperAudio"],
     code.hljs {
         background-color: var(--mc-bg-deep) !important;
         border-radius: var(--mc-radius) !important;
         border-top: 1px solid rgba(255, 255, 255, 0.03) !important;
         border-right: 1px solid rgba(255, 255, 255, 0.03) !important;
         border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
-    }
-}
-
-/* 4. Bottom "Follow Channel" Bar & Chat Input Box */
-main form {
-    [class^="channelTextArea_"],
-    [class^="wrapper_"] {
-        background-color: #202026 !important;
-        border-radius: var(--mc-radius) !important;
-        border: none !important;
     }
 }
