@@ -1,0 +1,136 @@
+/*!
+ * @name MinimalCord Reborn
+ * @author Wolfy (Original concept by Gibbu)
+ * @version 2.0.0
+ * @description Clean-slate, zero-lag modular SCSS rewrite of MinimalCord.
+ * @source https://github.com/MEWPASCO/MinimalCord-Reborn
+ * @updateUrl https://raw.githubusercontent.com/MEWPASCO/MinimalCord-Reborn/main/dist/MinimalCord.theme.css
+ */
+:root {
+  /* Exact Eyedropped Palette from Screenshot */
+  --mc-bg-chat: #18181b; /* Main chat & top header */
+  --mc-bg-sidebars: #121215; /* Server list, channels, members, user panel */
+  --mc-bg-deep: #0c0c0e; /* Embeds, search bar, note input, codeblocks */
+  --mc-bg-popout: #141417; /* Floating user popout body */
+  --mc-pill-channel: #25252b; /* Active channel pill (#plugin-releases) */
+  --mc-accent-blue: #3875d7; /* Active member highlight (Gibbu) & Follow pill */
+  --mc-boost-purple: #6b52ae; /* Server boost progress bar */
+  --mc-radius: 6px;
+}
+
+.theme-dark, html.theme-dark {
+  /* Main Surfaces */
+  --background-primary: var(--mc-bg-chat) !important;
+  --background-secondary: var(--mc-bg-sidebars) !important;
+  --background-secondary-alt: var(--mc-bg-sidebars) !important;
+  --background-tertiary: var(--mc-bg-sidebars) !important;
+  --background-floating: var(--mc-bg-popout) !important;
+  /* 2025/2026 Discord Redesign Variable Sync */
+  --bg-base-primary: var(--mc-bg-chat) !important;
+  --bg-base-secondary: var(--mc-bg-sidebars) !important;
+  --bg-base-tertiary: var(--mc-bg-sidebars) !important;
+  --bg-surface-overlay: var(--mc-bg-popout) !important;
+  --bg-surface-raised: var(--mc-bg-deep) !important;
+  --chat-background-default: var(--mc-bg-chat) !important;
+  /* Chat Input & Follow Bar */
+  --channeltextarea-background: #202026 !important;
+  /* Flat Minimalist Borders & Zero Lag Shadows */
+  --elevation-low: none !important;
+  --elevation-medium: none !important;
+  --elevation-stroke: none !important;
+  --border-subtle: rgba(255, 255, 255, 0.04) !important;
+}
+
+/* Unify Server List, Channel List, and Bottom User Area into one seamless dark surface */
+nav[aria-label="Servers sidebar"],
+[aria-label=Channels],
+section[aria-label="User area"] {
+  background-color: var(--mc-bg-sidebars) !important;
+  border: none !important;
+}
+
+/* Active Channel Pill (#plugin-releases look) */
+[aria-label=Channels] [role=listitem] a[aria-current=page] {
+  background-color: var(--mc-pill-channel) !important;
+  border-radius: var(--mc-radius) !important;
+}
+
+/* Seamless Top Channel Header & Deep Black Search Bar */
+section[aria-label="Channel header"] {
+  background-color: var(--mc-bg-chat) !important;
+  box-shadow: none !important;
+}
+section[aria-label="Channel header"] [role=search] {
+  background-color: var(--mc-bg-deep) !important;
+  border-radius: 4px !important;
+}
+
+/* Recessed Pitch-Dark Embeds (like BetterAudioPlayer & UserTags in screenshot) */
+article[class*=embed],
+[class*=embedFull] {
+  background-color: var(--mc-bg-deep) !important;
+  border-radius: var(--mc-radius) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.03) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.03) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Match Member List to Left Sidebar & Style Selected Member (Gibbu blue pill) */
+aside[aria-label*=Members],
+[aria-label=Members] {
+  background-color: var(--mc-bg-sidebars) !important;
+}
+aside[aria-label*=Members] [role=listitem]:hover > div,
+[aria-label=Members] [role=listitem]:hover > div {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+  border-radius: var(--mc-radius);
+}
+aside[aria-label*=Members],
+[aria-label=Members] {
+  /* Solid Blue Highlight when User Popout is Open */
+}
+aside[aria-label*=Members] [role=listitem][aria-expanded=true] > div,
+aside[aria-label*=Members] [class*=member][class*=selected] > div,
+[aria-label=Members] [role=listitem][aria-expanded=true] > div,
+[aria-label=Members] [class*=member][class*=selected] > div {
+  background-color: var(--mc-accent-blue) !important;
+  color: #ffffff !important;
+  border-radius: var(--mc-radius) !important;
+}
+
+/* User Popout Card & Rounded Pill Roles */
+div[role=dialog][aria-label*="User Profile"],
+[class*=userPopout] {
+  background-color: var(--mc-bg-popout) !important;
+  border-radius: 10px !important;
+  overflow: hidden;
+  /* Rounded Pill Role Tags */
+}
+div[role=dialog][aria-label*="User Profile"] [aria-label=Roles] [role=listitem],
+div[role=dialog][aria-label*="User Profile"] [class*=role_],
+[class*=userPopout] [aria-label=Roles] [role=listitem],
+[class*=userPopout] [class*=role_] {
+  background-color: #202026 !important;
+  border-radius: 20px !important;
+  border: none !important;
+  padding: 4px 10px !important;
+}
+div[role=dialog][aria-label*="User Profile"],
+[class*=userPopout] {
+  /* Recessed Dark Note Input */
+}
+div[role=dialog][aria-label*="User Profile"] textarea[aria-label=Note],
+[class*=userPopout] textarea[aria-label=Note] {
+  background-color: var(--mc-bg-deep) !important;
+  border-radius: var(--mc-radius) !important;
+}
+
+/* Keep Settings Sidebar & Content Area Matched to Main Window */
+[aria-label="User Settings"] [role=tablist],
+[aria-label="Server Settings"] [role=tablist] {
+  background-color: var(--mc-bg-sidebars) !important;
+}
+[aria-label="User Settings"] [role=tabpanel],
+[aria-label="Server Settings"] [role=tabpanel] {
+  background-color: var(--mc-bg-chat) !important;
+}
