@@ -1,0 +1,41 @@
+name: Build MinimalCord-Reborn SCSS
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'src/**'
+      - 'package.json'
+      - '.github/workflows/build.yml'
+  workflow_dispatch: # Lets you trigger a build manually from the Actions tab anytime
+
+permissions:
+  contents: write # Gives the bot permission to commit the compiled CSS back to your repo
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 📦 Install Dart Sass
+        run: npm install
+
+      - name: 🛠️ Compile SCSS to CSS
+        run: npm run build
+
+      - name: 🚀 Commit & Push Compiled Theme
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add dist/
+          git diff --staged --quiet || (git commit -m "⚡ Auto-build MinimalCord.theme.css [skip ci]" && git push)
