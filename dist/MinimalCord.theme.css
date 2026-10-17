@@ -41,33 +41,55 @@
   --border-subtle: rgba(255, 255, 255, 0.04) !important;
 }
 
-/* Unify Server List, Channel List, and Bottom User Area into one seamless dark surface */
+/* 1. Seamless Unified Left Sidebars (Servers, Channels, User Area) */
 nav[aria-label="Servers sidebar"],
-[aria-label=Channels],
-section[aria-label="User area"] {
+nav[aria-label="Servers sidebar"] [class^=scroller_],
+nav[aria-label=Channels],
+#channels,
+section[aria-label="User area"],
+section[aria-label="User area"] [class^=container_] {
   background-color: var(--mc-bg-sidebars) !important;
   border: none !important;
 }
 
-/* Active Channel Pill (#plugin-releases look) */
-[aria-label=Channels] [role=listitem] a[aria-current=page] {
-  background-color: var(--mc-pill-channel) !important;
-  border-radius: var(--mc-radius) !important;
+/* 2. Top-Left Server Header ("BetterDiscord") */
+nav[aria-label=Channels] header {
+  background-color: var(--mc-bg-sidebars) !important;
+  box-shadow: none !important;
 }
 
-/* Seamless Top Channel Header & Deep Black Search Bar */
+/* 3. Server Boost Bar (Purple gradient like in screenshot) */
+nav[aria-label=Channels] [class^=progressBar_] {
+  background: linear-gradient(90deg, #5865f2, #8045dd) !important;
+}
+
+/* 4. Channel Items & Active Selected Pill (#plugin-releases) */
+#channels [role=listitem] [class^=link_] {
+  border-radius: var(--mc-radius) !important;
+}
+#channels [role=listitem] a[aria-current=page], #channels [role=listitem][class*=selected_] [class^=link_] {
+  background-color: var(--mc-pill-channel) !important;
+}
+
+/* 1. Main Chat Background & Top Header */
+main[class^=chatContent_],
 section[aria-label="Channel header"] {
   background-color: var(--mc-bg-chat) !important;
   box-shadow: none !important;
-}
-section[aria-label="Channel header"] [role=search] {
-  background-color: var(--mc-bg-deep) !important;
-  border-radius: 4px !important;
+  border-bottom: none !important;
 }
 
-/* Recessed Pitch-Dark Embeds (like BetterAudioPlayer & UserTags in screenshot) */
-article[class*=embed],
-[class*=embedFull] {
+/* 2. Deep Recessed Search Bar in Top Right */
+section[aria-label="Channel header"] [role=search] [class^=searchBar_] {
+  background-color: var(--mc-bg-deep) !important;
+  border-radius: 4px !important;
+  border: none !important;
+}
+
+/* 3. Recessed Pitch-Dark Embeds, Audio Players & Codeblocks */
+main article[class^=embedFull_],
+main div[class^=wrapperAudio_],
+main code.hljs {
   background-color: var(--mc-bg-deep) !important;
   border-radius: var(--mc-radius) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.03) !important;
@@ -75,27 +97,35 @@ article[class*=embed],
   border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
 }
 
-/* Match Member List to Left Sidebar & Style Selected Member (Gibbu blue pill) */
-aside[aria-label*=Members],
-[aria-label=Members] {
+/* 4. Bottom "Follow Channel" Bar & Chat Input Box */
+main form [class^=channelTextArea_],
+main form [class^=wrapper_] {
+  background-color: #202026 !important;
+  border-radius: var(--mc-radius) !important;
+  border: none !important;
+}
+
+/* 1. Member List Background Sync */
+div[class^=membersWrap_],
+div[class^=members_] {
   background-color: var(--mc-bg-sidebars) !important;
 }
-aside[aria-label*=Members] [role=listitem]:hover > div,
-[aria-label=Members] [role=listitem]:hover > div {
-  background-color: rgba(255, 255, 255, 0.04) !important;
-  border-radius: var(--mc-radius);
-}
-aside[aria-label*=Members],
-[aria-label=Members] {
-  /* Solid Blue Highlight when User Popout is Open */
-}
-aside[aria-label*=Members] [role=listitem][aria-expanded=true] > div,
-aside[aria-label*=Members] [class*=member][class*=selected] > div,
-[aria-label=Members] [role=listitem][aria-expanded=true] > div,
-[aria-label=Members] [class*=member][class*=selected] > div {
-  background-color: var(--mc-accent-blue) !important;
-  color: #ffffff !important;
+
+/* 2. Member Rows & Solid Blue Active Highlight (Gibbu in screenshot) */
+div[class^=members_] [role=listitem] > div {
   border-radius: var(--mc-radius) !important;
+}
+div[class^=members_] [role=listitem]:hover > div {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+}
+div[class^=members_] [role=listitem][class*=selected_] > div,
+div[class^=members_] [role=listitem] > div[class*=selected_] {
+  background-color: var(--mc-accent-blue) !important;
+  /* Force white text & subtext when highlighted blue */
+}
+div[class^=members_] [role=listitem][class*=selected_] > div *,
+div[class^=members_] [role=listitem] > div[class*=selected_] * {
+  color: #ffffff !important;
 }
 
 /* User Popout Card & Rounded Pill Roles */
