@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*!
  * @name MinimalCord Reborn
  * @author Wolfy (Original concept by Gibbu)
@@ -15,404 +14,109 @@ body,
 .theme-midnight,
 .visual-refresh,
 div[class*=theme-] {
-  /* MinimalCord Exact Screenshot Palette */
-  --mc-bg-chat: #18181b; /* Main chat & top header */
-  --mc-bg-sidebars: #121215; /* Server list, channels, members, user panel */
-  --mc-bg-deep: #0c0c0e; /* Embeds, search bar, note input, codeblocks */
-  --mc-bg-popout: #141417; /* Floating user popout body & modals */
-  --mc-bg-input: #202026; /* Chat input box & pill tags */
-  --mc-pill-channel: #25252b; /* Selected channel pill */
-  --mc-accent-blue: #3875d7; /* Active member highlight & accent */
-  --mc-radius: 6px;
   /* =========================================================================
-     1. NEW 2026 "VISUAL-REFRESH" & "THEME-DARKER" TOKENS (From Your Dump!)
+     1. MINIMALCORD MASTER PALETTE (Reuse these across all files!)
      ========================================================================= */
-  /* Main Chat Surfaces */
-  --chat-background: var(--mc-bg-chat) !important;
-  --chat-background-default: var(--mc-bg-chat) !important;
-  --home-background: var(--mc-bg-chat) !important;
-  --background-base-low: var(--mc-bg-chat) !important;
-  --bg-base-primary: var(--mc-bg-chat) !important;
-  --background-primary: var(--mc-bg-chat) !important;
-  /* Sidebars, Channels, Member List, User Panel & Frame */
+  --mc-bg-sidebars: #121215; /* Darkest matte frame (Servers, Channels, Members, User bar) */
+  --mc-bg-chat: #18181b; /* Center stage (Chat & Top Header) */
+  --mc-bg-deep: #0c0c0e; /* Recessed boxes (Embeds, Search bar, Codeblocks) */
+  --mc-bg-popout: #141417; /* Floating popouts & modals */
+  --mc-bg-input: #202026; /* Chat message bar & role pills */
+  --mc-pill-channel: #25252b; /* Active channel highlight */
+  --mc-accent-blue: #3875d7; /* Active member highlight & primary accent */
+  --mc-radius: 6px; /* Global border radius */
+  /* =========================================================================
+     2. DISCORD ENGINE VARIABLE MAPPING
+     ========================================================================= */
+  /* Outer Frame & Sidebars */
+  --app-frame-background: var(--mc-bg-sidebars) !important;
+  --background-base-lowest: var(--mc-bg-sidebars) !important;
+  --background-base-lower: var(--mc-bg-sidebars) !important;
   --channel-background-default: var(--mc-bg-sidebars) !important;
   --custom-channel-members-bg: var(--mc-bg-sidebars) !important;
   --panel-bg: var(--mc-bg-sidebars) !important;
-  --app-frame-background: var(--mc-bg-sidebars) !important;
-  --background-base-lower: var(--mc-bg-sidebars) !important;
-  --background-base-lowest: var(--mc-bg-sidebars) !important;
   --bg-base-secondary: var(--mc-bg-sidebars) !important;
   --bg-base-tertiary: var(--mc-bg-sidebars) !important;
   --background-secondary: var(--mc-bg-sidebars) !important;
   --background-secondary-alt: var(--mc-bg-sidebars) !important;
   --background-tertiary: var(--mc-bg-sidebars) !important;
-  /* Recessed Dark Embeds, Cards & Inputs */
+  /* Main Chat Surfaces */
+  --chat-background: var(--mc-bg-chat) !important;
+  --chat-background-default: var(--mc-bg-chat) !important;
+  --background-base-low: var(--mc-bg-chat) !important;
+  --home-background: var(--mc-bg-chat) !important;
+  --bg-base-primary: var(--mc-bg-chat) !important;
+  --background-primary: var(--mc-bg-chat) !important;
+  /* Deep Recessed Elements */
   --embed-background: var(--mc-bg-deep) !important;
   --embed-background-alternate: var(--mc-bg-deep) !important;
   --card-background-default: var(--mc-bg-deep) !important;
   --card-secondary-bg: var(--mc-bg-deep) !important;
   --input-background-default: var(--mc-bg-deep) !important;
   --bg-surface-raised: var(--mc-bg-deep) !important;
-  --user-profile-note-background-focus: var(--mc-bg-deep) !important;
-  --profile-gradient-note-background: var(--mc-bg-deep) !important;
-  /* Popouts, Modals & Floating Overlays */
+  /* Floating Surfaces */
   --modal-background: var(--mc-bg-popout) !important;
   --modal-footer-background: var(--mc-bg-popout) !important;
-  --user-profile-overlay-background: var(--mc-bg-popout) !important;
-  --user-profile-toolbar-background: var(--mc-bg-popout) !important;
-  --user-profile-activity-toolbar-background: var(--mc-bg-popout) !important;
   --background-surface-high: var(--mc-bg-popout) !important;
   --background-surface-higher: var(--mc-bg-popout) !important;
   --background-surface-highest: var(--mc-bg-popout) !important;
   --bg-surface-overlay: var(--mc-bg-popout) !important;
-  --custom-bg-surface-overlay: var(--mc-bg-popout) !important;
   --background-floating: var(--mc-bg-popout) !important;
-  /* Interactive Hover & Selected Channel States */
-  --interactive-background-hover: rgba(255, 255, 255, 0.04) !important;
-  --interactive-background-selected: var(--mc-pill-channel) !important;
-  --interactive-background-active: var(--mc-pill-channel) !important;
-  --message-background-hover: rgba(255, 255, 255, 0.02) !important;
-  --channeltextarea-background: var(--mc-bg-input) !important;
-  /* Kill Visual-Refresh Borders Between Panels */
+  /* Kill Default Panel Borders */
   --chat-border: transparent !important;
-  --card-border-default: rgba(255, 255, 255, 0.03) !important;
-  --profile-gradient-role-pill-background: var(--mc-bg-input) !important;
 }
 
-/* ==========================================================================
-   SIDEBAR MODULE (Matched to Wolfy's Live DOM Dump)
-   ========================================================================== */
-/* 1. Outer Sidebar Wrapper, Server List & Rounded Channel List Container */
+/* 1. Outer Frame, Top Windows Bar & Left Sidebars -> var(--mc-bg-sidebars) */
+div.bg__960e4,
+div.bar_c38106,
 div.sidebar__5e434,
-nav.wrapper_ef3116.guilds__5e434,
-nav.wrapper_ef3116 .scroller_ef3116,
+nav.guilds__5e434,
+nav.guilds__5e434 .scroller_ef3116,
 div.sidebarList__5e434,
 nav.container__2637a,
-div#channels.scroller__629e4 {
-  background-color: var(--mc-bg-sidebars) !important;
-  border: none !important;
-  border-radius: 0 !important; /* Removes visual-refresh rounded box gap */
-}
-
-/* 2. Top Server Header ("ΛVΛRIΛ") & Glass/Banner Backdrops */
+div#channels.scroller__629e4,
 div.container_f37cb1,
 header.header_f37cb1,
-div.headerGlass_f37cb1 {
-  background-color: var(--mc-bg-sidebars) !important;
-  box-shadow: none !important;
-  border-bottom: none !important;
-}
-
-/* 3. Server Folders in Left Guild Bar */
-div.folderGroup__48112,
-div.folderHeader__48112,
-div.folderButton__48112 {
-  background-color: rgba(255, 255, 255, 0.03) !important;
-}
-
-/* 4. Channel List Items (li.containerDefault_c69b6d -> div.wrapper__2ea32) */
-ul[aria-label=Channels] li.containerDefault_c69b6d div.wrapper__2ea32 {
-  border-radius: var(--mc-radius) !important;
-  margin-left: 8px !important;
-  margin-right: 8px !important;
-}
-ul[aria-label=Channels] li.containerDefault_c69b6d {
-  /* Hover State */
-}
-ul[aria-label=Channels] li.containerDefault_c69b6d:hover div.wrapper__2ea32 {
-  background-color: rgba(255, 255, 255, 0.04) !important;
-}
-ul[aria-label=Channels] li.containerDefault_c69b6d {
-  /* Active / Selected Channel Pill */
-}
-ul[aria-label=Channels] li.containerDefault_c69b6d[class*=selected] div.wrapper__2ea32,
-ul[aria-label=Channels] li.containerDefault_c69b6d div.wrapper__2ea32[class*=modeSelected] {
-  background-color: var(--mc-pill-channel) !important;
-}
-
-/* 5. Bottom-Left User Status & RTC Voice Panel (Seamless MinimalCord Look) */
-section.panels__5e434[aria-label="User status and settings"] {
+section.panels__5e434,
+div.wrapper_e131a9,
+div.container_e131a9,
+div.container__37e49 {
+  background: var(--mc-bg-sidebars) !important;
   background-color: var(--mc-bg-sidebars) !important;
   border: none !important;
-  margin: 0 !important;
   border-radius: 0 !important;
-  /* Voice Connected Box (wrapper_e131a9) & Account Row (container__37e49) */
-}
-section.panels__5e434[aria-label="User status and settings"] div.wrapper_e131a9,
-section.panels__5e434[aria-label="User status and settings"] div.container_e131a9,
-section.panels__5e434[aria-label="User status and settings"] div.container__37e49 {
-  background-color: var(--mc-bg-sidebars) !important;
-  border-bottom: none !important;
-}
-section.panels__5e434[aria-label="User status and settings"] {
-  /* Voice Action Buttons (Noise Suppression, Soundboard, Camera) */
-}
-section.panels__5e434[aria-label="User status and settings"] button.button_e131a9 {
-  background-color: var(--mc-bg-deep) !important;
-  border: none !important;
-}
-
-/* ==========================================================================
-   CHAT MODULE (Matched to Wolfy's Live DOM Dump)
-   ========================================================================== */
-/* 1. Main Page & Chat Container */
-div.page__5e434,
-div.chat_f75fb0,
-div.content_f75fb0,
-main.chatContent_f75fb0,
-div.messagesWrapper__36d07,
-div.scroller__36d07 {
-  background-color: var(--mc-bg-chat) !important;
-  border: none !important;
-}
-
-/* 2. Top Channel Header (section.title_f75fb0.container__9293f) */
-div.subtitleContainer_f75fb0,
-section.title_f75fb0.container__9293f {
-  background-color: var(--mc-bg-chat) !important;
   box-shadow: none !important;
-  border-bottom: none !important;
-  /* Top-Right Recessed Search Box */
-}
-div.subtitleContainer_f75fb0 div.search__49676,
-div.subtitleContainer_f75fb0 div.search_c322aa,
-div.subtitleContainer_f75fb0 [class*=searchBar],
-section.title_f75fb0.container__9293f div.search__49676,
-section.title_f75fb0.container__9293f div.search_c322aa,
-section.title_f75fb0.container__9293f [class*=searchBar] {
-  background-color: var(--mc-bg-deep) !important;
-  border-radius: 4px !important;
-  border: none !important;
 }
 
-/* 3. Kill the Visual-Refresh Bottom Chat Gradient Shadow */
-div.chatGradient__36d07,
-div.chatGradientBase__36d07 {
-  display: none !important;
-}
-
-/* 4. Bottom Chat Input Box (div.channelTextArea_f75fb0.channelTextArea__74017) */
-form.form_f75fb0 {
-  background-color: var(--mc-bg-chat) !important;
-}
-form.form_f75fb0 div.channelTextArea_f75fb0,
-form.form_f75fb0 div.channelTextArea__74017,
-form.form_f75fb0 [class*=scrollableContainer] {
-  background-color: var(--mc-bg-input) !important;
-  border-radius: var(--mc-radius) !important;
-  border: none !important;
-}
-
-/* 5. Recessed Pitch-Dark Embeds, Audio Players & Codeblocks */
-main.chatContent_f75fb0 article[class*=embed],
-main.chatContent_f75fb0 div[class*=embedFull],
-main.chatContent_f75fb0 div[class*=wrapperAudio],
-main.chatContent_f75fb0 code.hljs {
-  background-color: var(--mc-bg-deep) !important;
-  border-radius: var(--mc-radius) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.03) !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.03) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
-}
-
-/* ==========================================================================
-   MEMBERS MODULE (Matched to Wolfy's Live DOM Dump + Vencord MemberCount)
-   ========================================================================== */
-/* 1. Member List Sidebar & Vencord MemberCount Widget */
+/* 2. Right Member List -> var(--mc-bg-sidebars) */
 div.container_c8ffbb,
 aside.membersWrap_c8ffbb,
 div.members_c8ffbb,
 div.members_c8ffbb > div.content_d125d2,
 div.vc-membercount-widget {
+  background: var(--mc-bg-sidebars) !important;
   background-color: var(--mc-bg-sidebars) !important;
   border: none !important;
 }
 
-/* 2. Individual Member Rows (div.member__5d473.member_c8ffbb.container__91a9d) */
-div.member__5d473.member_c8ffbb {
-  background-color: transparent !important;
-}
-div.member__5d473.member_c8ffbb > div[class*=layout], div.member__5d473.member_c8ffbb {
-  border-radius: var(--mc-radius) !important;
-}
-div.member__5d473.member_c8ffbb:hover, div.member__5d473.member_c8ffbb:hover > div {
-  background-color: rgba(255, 255, 255, 0.04) !important;
-}
-div.member__5d473.member_c8ffbb {
-  /* Active Selected Member (Solid Blue Pill like Gibbu in Screenshot) */
-}
-div.member__5d473.member_c8ffbb[class*=selected], div.member__5d473.member_c8ffbb[aria-expanded=true] {
-  background-color: var(--mc-accent-blue) !important;
-}
-div.member__5d473.member_c8ffbb[class*=selected] *, div.member__5d473.member_c8ffbb[aria-expanded=true] * {
-  color: #ffffff !important;
-}
-
-/* 1. User Profile Popout (Non-Nitro & Standard Cards) */
-div[role=dialog] [class^=userPopoutOuter_],
-div[role=dialog] [class^=biteSizeOuter_],
-div[role=dialog] [class^=fullSizeOuter_] {
-  background: var(--mc-bg-popout) !important;
-  border-radius: 10px !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65) !important;
-  border: none !important;
-}
-div[role=dialog] {
-  /* Inner card body where About Me & Roles live */
-}
-div[role=dialog] [class^=userPopoutInner_],
-div[role=dialog] [class^=biteSizeInner_],
-div[role=dialog] [class^=overlayBackground_],
-div[role=dialog] [class^=body_] {
-  background-color: var(--mc-bg-popout) !important;
-}
-div[role=dialog] {
-  /* Pill-Shaped Role Tags (like "Theme Developer" in screenshot) */
-}
-div[role=dialog] [aria-label=Roles] [role=listitem],
-div[role=dialog] [class^=role_] {
-  background-color: #202026 !important;
-  border-radius: 20px !important;
-  border: none !important;
-  padding: 4px 10px !important;
-}
-div[role=dialog] {
-  /* Recessed Dark Note Input & Quick Message Box */
-}
-div[role=dialog] textarea[aria-label=Note],
-div[role=dialog] [class^=channelTextArea_] [class^=scrollableContainer_] {
-  background-color: var(--mc-bg-deep) !important;
-  border-radius: var(--mc-radius) !important;
-  border: none !important;
-}
-
-/* 2. Right-Click Context Menus (Flat & Clean) */
-div[role=menu] {
-  background-color: var(--mc-bg-deep) !important;
-  border-radius: 8px !important;
-  border: 1px solid rgba(255, 255, 255, 0.04) !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6) !important;
-  /* Menu hover pill */
-}
-div[role=menu] [role=menuitem][class*=focused_]:not([class*=colorDanger_]) {
-  background-color: var(--mc-accent-blue) !important;
-  border-radius: 5px !important;
-}
-
-/* 3. Search Results Dropdown & Autocomplete Popouts */
-div[id^=popout_] [class^=container_],
-div[class^=autocomplete_] {
-  background-color: var(--mc-bg-popout) !important;
-  border-radius: 8px !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
-}
-
-/* 1. Settings Sidebar & Main Content Area */
-div[aria-label*=_SETTINGS],
-div[class^=layer_] [class^=standardSidebarView_] {
+/* 3. Center Chat & Top Channel Header -> var(--mc-bg-chat) */
+div.page__5e434,
+div.chat_f75fb0,
+div.subtitleContainer_f75fb0,
+section.title_f75fb0.container__9293f,
+div.content_f75fb0,
+main.chatContent_f75fb0,
+div.messagesWrapper__36d07,
+div.scroller__36d07,
+form.form_f75fb0 {
+  background: var(--mc-bg-chat) !important;
   background-color: var(--mc-bg-chat) !important;
-  /* Left Navigation Sidebar */
-}
-div[aria-label*=_SETTINGS] [class^=sidebarRegion_],
-div[aria-label*=_SETTINGS] [class^=sidebarRegionScroller_],
-div[class^=layer_] [class^=standardSidebarView_] [class^=sidebarRegion_],
-div[class^=layer_] [class^=standardSidebarView_] [class^=sidebarRegionScroller_] {
-  background-color: var(--mc-bg-sidebars) !important;
-}
-div[aria-label*=_SETTINGS],
-div[class^=layer_] [class^=standardSidebarView_] {
-  /* Right Content Panel */
-}
-div[aria-label*=_SETTINGS] [class^=contentRegion_],
-div[aria-label*=_SETTINGS] [class^=contentRegionScroller_],
-div[class^=layer_] [class^=standardSidebarView_] [class^=contentRegion_],
-div[class^=layer_] [class^=standardSidebarView_] [class^=contentRegionScroller_] {
-  background-color: var(--mc-bg-chat) !important;
-}
-div[aria-label*=_SETTINGS],
-div[class^=layer_] [class^=standardSidebarView_] {
-  /* Selected Settings Tab Pill */
-}
-div[aria-label*=_SETTINGS] nav [role=tab][aria-selected=true],
-div[class^=layer_] [class^=standardSidebarView_] nav [role=tab][aria-selected=true] {
-  background-color: var(--mc-pill-channel) !important;
-  border-radius: var(--mc-radius) !important;
-}
-div[aria-label*=_SETTINGS],
-div[class^=layer_] [class^=standardSidebarView_] {
-  /* Recessed "My Account" Card & Settings Boxes */
-}
-div[aria-label*=_SETTINGS] [class^=accountProfileCard_],
-div[aria-label*=_SETTINGS] [class^=background_],
-div[aria-label*=_SETTINGS] [class^=fieldList_],
-div[aria-label*=_SETTINGS] [class^=cardPrimary_],
-div[class^=layer_] [class^=standardSidebarView_] [class^=accountProfileCard_],
-div[class^=layer_] [class^=standardSidebarView_] [class^=background_],
-div[class^=layer_] [class^=standardSidebarView_] [class^=fieldList_],
-div[class^=layer_] [class^=standardSidebarView_] [class^=cardPrimary_] {
-  background-color: var(--mc-bg-deep) !important;
-  border-radius: 8px !important;
   border: none !important;
+  box-shadow: none !important;
 }
 
-/* 1. Seamless Top Windows Titlebar (Matches Left Sidebar like in Screenshot) */
-div[class^=titleBar_],
-div[class^=typeWindows_] {
-  background-color: var(--mc-bg-sidebars) !important;
-  margin-top: 0 !important;
-  padding-top: 4px !important;
-}
-
-/* 2. Direct Messages Sidebar & "Find or start a conversation" Bar */
-nav[aria-label="Private channels"] {
-  background-color: var(--mc-bg-sidebars) !important;
-  /* Top Search Button in DMs */
-}
-nav[aria-label="Private channels"] [class^=searchBar_] button {
-  background-color: var(--mc-bg-deep) !important;
-  border-radius: 4px !important;
-}
-nav[aria-label="Private channels"] {
-  /* Selected DM User Pill */
-}
-nav[aria-label="Private channels"] [role=listitem] a[aria-current=page] {
-  background-color: var(--mc-pill-channel) !important;
-  border-radius: var(--mc-radius) !important;
-}
-
-/* 3. Friends List Page & "Active Now" Right Column */
-main[aria-label=Friends],
-div[class^=container_][aria-label=Friends] {
-  background-color: var(--mc-bg-chat) !important;
-  /* Top Friends Header Bar */
-}
-main[aria-label=Friends] section[aria-label="Channel header"],
-div[class^=container_][aria-label=Friends] section[aria-label="Channel header"] {
-  background-color: var(--mc-bg-chat) !important;
-}
-main[aria-label=Friends],
-div[class^=container_][aria-label=Friends] {
-  /* Right-side "Active Now" Sidebar */
-}
-main[aria-label=Friends] [class^=nowPlayingColumn_],
-main[aria-label=Friends] aside[class^=container_],
-div[class^=container_][aria-label=Friends] [class^=nowPlayingColumn_],
-div[class^=container_][aria-label=Friends] aside[class^=container_] {
-  background-color: var(--mc-bg-sidebars) !important;
-  /* Recessed Activity Cards inside Active Now */
-}
-main[aria-label=Friends] [class^=nowPlayingColumn_] [class^=itemCard_],
-main[aria-label=Friends] aside[class^=container_] [class^=itemCard_],
-div[class^=container_][aria-label=Friends] [class^=nowPlayingColumn_] [class^=itemCard_],
-div[class^=container_][aria-label=Friends] aside[class^=container_] [class^=itemCard_] {
-  background-color: var(--mc-bg-deep) !important;
-  border: none !important;
-  border-radius: var(--mc-radius) !important;
-}
-
-/* Top Windows Titlebar & Root Background Layer */
-div.bg__960e4,
-div.bar_c38106,
-div.systemBar_c38106 {
-  background-color: var(--mc-bg-sidebars) !important;
+/* 4. Remove Bottom Chat Gradient Overlay */
+div.chatGradient__36d07,
+div.chatGradientBase__36d07 {
+  display: none !important;
 }
