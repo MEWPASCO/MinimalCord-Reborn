@@ -4,7 +4,7 @@
   "description": "Clean, zero-lag SCSS rewrite of MinimalCord",
   "scripts": {
     "build": "sass src/index.scss dist/MinimalCord.theme.css --no-source-map",
-    "watch": "sass --watch src/index.scss dist/MinimalCord.theme.css --no-source-map"
+    "watch": "sass --watch \"src/index.scss:%APPDATA%/Vencord/themes/MinimalCord-Local.theme.css\" --no-source-map"
   },
   "devDependencies": {
     "sass": "^1.80.0"
