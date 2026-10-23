@@ -1,0 +1,77 @@
+// Builds Discord's brand colour scale from the single $accent in _config.scss.
+// Everything is computed at build time, so it costs nothing while Discord runs.
+
+@use "sass:color";
+@use "sass:map";
+@use "sass:math";
+@use "config" as *;
+
+// Positive = mix with white by that percent, negative = mix with black.
+$scale: (
+  100: 90,
+  130: 88,
+  160: 86,
+  200: 82,
+  230: 78,
+  260: 72,
+  300: 66,
+  330: 58,
+  345: 50,
+  360: 42,
+  400: 30,
+  430: 20,
+  460: 10,
+  500: 0,
+  530: -8,
+  560: -18,
+  600: -28,
+  630: -38,
+  660: -48,
+  700: -58,
+  730: -66,
+  760: -72,
+  800: -78,
+  830: -84,
+  860: -89,
+  900: -95
+);
+
+@function step($n) {
+  $w: map.get($scale, $n);
+  @if $w == 0 {
+    @return $accent;
+  }
+  @if $w > 0 {
+    @return color.mix(#fff, $accent, $w * 1%);
+  }
+  @return color.mix(#000, $accent, math.abs($w) * 1%);
+}
+
+// "H S% L%" - the format of Discord's --brand-*-hsl variables
+@function hsl-triple($c) {
+  $h: color.channel($c, "hue", $space: hsl);
+  $s: color.channel($c, "saturation", $space: hsl);
+  $l: color.channel($c, "lightness", $space: hsl);
+  @return "#{math.round(math.div($h, 1deg))} #{math.round(math.div($s, 1%))}% #{math.round(math.div($l, 1%))}%";
+}
+
+@function tint($a) {
+  @return color.change($accent, $alpha: $a);
+}
+
+// --brand-100 ... --brand-900, their -hsl twins, and --brand-05a ... --brand-95a
+@mixin scale-vars {
+  @each $n, $w in $scale {
+    --brand-#{$n}: #{step($n)};
+    --brand-#{$n}-hsl: #{hsl-triple(step($n))};
+  }
+
+  @for $i from 1 through 19 {
+    $a: $i * 5;
+    $label: "#{$a}";
+    @if $a < 10 {
+      $label: "0#{$a}";
+    }
+    --brand-#{$label}a: #{tint(math.div($a, 100))};
+  }
+}

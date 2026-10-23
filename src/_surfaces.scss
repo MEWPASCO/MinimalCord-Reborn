@@ -1,0 +1,103 @@
+// Colour layer. Discord's newer UI reads a lot of surface variables that older
+// themes never touched, so we set every one seen in the current client.
+//
+// The selector is repeated three times on purpose: Discord re-declares its
+// variables on every element that carries a theme class (the server list,
+// channel header and so on all do), and the extra specificity makes sure
+// our values win there too, not just on <html>.
+
+@use "config" as *;
+@use "palette" as *;
+@use "brand";
+
+$dark: ".theme-dark.theme-dark.theme-dark, .theme-midnight.theme-midnight.theme-midnight";
+
+@mixin paint($value, $names...) {
+  @each $name in $names {
+    --#{$name}: #{$value};
+  }
+}
+
+@mixin surface-vars {
+  // chat, channel list, member list, user panel
+  @include paint($bg,
+    background-primary, bg-base-primary, chat-background-default, chat-background,
+    home-background, background-base-low,
+    background-secondary, background-secondary-alt, background-tertiary,
+    bg-base-secondary, bg-base-tertiary, background-base-lower,
+    channel-background-default, panel-bg, custom-channel-members-bg,
+    modal-footer-background);
+
+  // server list, app frame, embeds
+  @include paint($bg-dark,
+    app-frame-background, background-base-lowest,
+    guild-profile-banner-background-default, user-profile-note-background-focus,
+    embed-background, embed-background-alternate, polls-normal-image-background);
+
+  // message box, cards, modals
+  @include paint($bg-alt,
+    channeltextarea-background, bg-surface-raised, background-surface-high,
+    card-background-default, modal-background);
+
+  // menus, popouts, tooltips
+  @include paint($bg-light-alt,
+    background-floating, bg-surface-overlay, background-surface-higher);
+  @include paint(rgba($bg-light-alt, 0.8), custom-bg-surface-overlay);
+
+  // profile cards and top-most surfaces
+  @include paint($bg-light,
+    background-surface-highest, background-accent,
+    user-profile-overlay-background, user-profile-toolbar-background,
+    user-profile-activity-toolbar-background);
+}
+
+@mixin text-vars {
+  @include paint($text, text-normal, channels-default);
+  @include paint($text-muted, text-muted);
+  @include paint($text-focus, header-primary);
+
+  --font-primary: "#{$font}", "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: var(--font-primary);
+}
+
+@mixin accent-vars {
+  @include paint(brand.step(500),
+    background-brand, control-primary-background-default,
+    radio-background-selected-default, switch-background-selected-default,
+    checkbox-background-selected-default, badge-primary-background,
+    button-outline-brand-background-hover, interactive-accent-background-selected,
+    interactive-accent-background-hover, progressbar-indicator-background,
+    chart-brand);
+
+  @include paint(brand.step(530),
+    control-primary-background-hover, radio-background-selected-hover,
+    switch-background-selected-hover, checkbox-background-selected-hover);
+
+  @include paint(brand.step(600),
+    control-primary-background-active, radio-background-active,
+    switch-background-active, checkbox-background-active,
+    interactive-accent-background-active);
+
+  @include paint(brand.step(560), button-outline-brand-border-active);
+  @include paint(brand.step(400), text-brand, icon-brand);
+  @include paint(brand.step(360), control-brand-foreground, control-brand-foreground-new);
+
+  // translucent accent washes
+  @include paint(brand.tint(0.24),
+    mention-background, reaction-background-reacted-default,
+    reaction-background-reacted-hover, togglebutton-background-selected-hover,
+    badge-rare-background);
+  @include paint(brand.tint(0.16),
+    message-highlight-background-default, togglebutton-background-selected);
+  @include paint(brand.tint(0.12), message-highlight-background-hover);
+  @include paint(brand.tint(0.08), background-code);
+  @include paint(brand.tint(0.4), datepicker-range-background-default);
+  @include paint(brand.tint(0.6), datepicker-range-background-hover);
+}
+
+#{$dark} {
+  @include brand.scale-vars;
+  @include accent-vars;
+  @include surface-vars;
+  @include text-vars;
+}

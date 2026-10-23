@@ -1,0 +1,57 @@
+// Every Discord class name this theme depends on lives in this one file.
+// When a Discord update breaks part of the UI, this is the only file that
+// needs new names.
+//
+// Two kinds of hook:
+//   [class*="name_"]   matches the name and ignores the hash that changes every
+//                      build. Used whenever the name is distinctive enough.
+//   .name__hash        exact class. Used when the name is too generic to match
+//                      on its own (container, wrapper, header, link...). These
+//                      were checked against the DOM dump of 2026-10-23, or come
+//                      from the original MinimalCord and are marked "unchecked".
+
+// ---- App frame -------------------------------------------------------------
+$guilds: 'nav[class*="guilds_"]';
+$guilds-scroll: 'nav[class*="guilds_"] [class*="scrollerBase_"]';
+$sidebar: '.sidebar__5e434';
+$sidebar-list: '[class*="sidebarList_"]';
+$channel-nav: 'nav.container__2637a';
+$guild-header: 'header.header_f37cb1';
+$panels: '[class*="panels_"]';
+$panel-account: '.container__37e49';
+$page: 'div.page__5e434';
+
+// ---- Chat ------------------------------------------------------------------
+$chat: '.chat_f75fb0';
+$chat-inner: '.chat_f75fb0 .content_f75fb0';
+$chat-header: '.container__9293f';
+$chat-header-children: '.children__9293f';
+$chat-content: '[class*="chatContent_"]';
+$chat-gradient: '[class*="chatGradient_"]';
+$chat-form: 'form.form_f75fb0';
+$text-area: '[class*="channelTextArea_"]';
+$text-area-box: '[class*="scrollableContainer_"]'; // unchecked
+$text-placeholder: '[class*="channelTextArea_"] [class*="placeholder_"]'; // unchecked
+
+// ---- Channel list ----------------------------------------------------------
+$channel-row: '.wrapper__2ea32';
+$channel-link: '.link__2ea32';
+$channel-selected: '[class*="modeSelected_"]'; // unchecked
+$channel-muted: '[class*="modeMuted_"]';       // unchecked
+$channel-thread: '[class*="typeThread_"]';
+
+// ---- Messages (the least checked part: the dump did not expand the list) ---
+$msg: '[class*="cozy_"]';
+$msg-start: '[class*="groupStart_"]';
+$msg-mentioned: '[class*="mentioned_"]';
+$msg-contents: '[class*="cozy_"] [class*="contents_"]';
+$msg-avatar: '[class*="cozy_"] [class*="avatar_"]';
+$msg-timestamp-alt: '[class*="cozy_"] [class*="timestamp_"][class*="alt_"]';
+$msg-reply: '[class*="cozy_"] [class*="repliedMessage_"]';
+
+// ---- Members ---------------------------------------------------------------
+$members: '[class*="members_"]';
+$member: '[class*="member_"]';
+
+// ---- Menus -----------------------------------------------------------------
+$menu-item: '[role="menu"] [role^="menuitem"][class*="focused_"]:not([class*="colorDanger_"])';

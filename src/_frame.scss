@@ -1,0 +1,51 @@
+// Flat app frame: borderless, shadowless, square. Server list one step darker.
+
+@use "config" as *;
+@use "palette" as *;
+@use "hooks" as *;
+
+html {
+  #{$guilds},
+  #{$guilds-scroll} {
+    background: $bg-dark;
+  }
+
+  #{$guilds-scroll}::-webkit-scrollbar {
+    display: none;
+  }
+
+  #{$sidebar},
+  #{$channel-nav} {
+    background: $bg;
+  }
+
+  // the newer client rounds the channel list; the original look is square
+  #{$sidebar-list} {
+    border: none;
+    border-radius: 0;
+  }
+
+  #{$guild-header} {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+  }
+
+  // user panel at the bottom of the channel list
+  #{$panels} {
+    background: $bg;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  #{$panels} #{$panel-account} {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  #{$page} {
+    border: none;
+  }
+}

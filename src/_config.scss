@@ -1,0 +1,24 @@
+// MinimalCord Reborn - settings
+// Change a value, save, and the watcher rebuilds the theme file.
+// These are the same knobs the original MinimalCord had, with the same defaults.
+
+// Accent colour (original default: rgb(50, 131, 207))
+$accent: #3283cf;
+
+// Background colour. Every surface is derived from these three numbers.
+$dark-bg-hue: 218;
+$dark-bg-saturation: 15%;
+$dark-bg-lightness: 11%;
+
+// Shape and spacing
+$border-radius: 5px;
+$message-padding: 10px; // space inside each message
+$message-spacing: 10px; // space between message groups
+
+// Font (see README to load Inter)
+$font: "Inter";
+
+// Switches
+$message-cards: true;       // each message sits on its own rounded card, like the original
+$hide-header-effects: true; // hides the glass / ellipse overlays on the server header
+$disable-blur: true;        // turns off Discord's large background blur radius

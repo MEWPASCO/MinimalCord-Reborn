@@ -1,0 +1,33 @@
+// Member list: transparent, with accent highlight on the selected member.
+
+@use "config" as *;
+@use "palette" as *;
+@use "hooks" as *;
+
+html {
+  #{$members},
+  #{$members} > div {
+    background: transparent;
+    border: none;
+  }
+
+  #{$member} {
+    background: transparent;
+  }
+
+  #{$member}:hover [class*="layout_"] {
+    background: $bg-alt;
+    width: 100%;
+  }
+
+  #{$member}:active [class*="layout_"] {
+    background: $bg-light;
+    width: 100%;
+  }
+
+  #{$member}[class*="selected_"] [class*="layout_"] {
+    background: $accent;
+    width: 100%;
+    color: #fff;
+  }
+}

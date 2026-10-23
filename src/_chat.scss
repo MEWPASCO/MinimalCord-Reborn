@@ -1,0 +1,43 @@
+// Chat area, channel header and message box.
+
+@use "config" as *;
+@use "palette" as *;
+@use "hooks" as *;
+
+html {
+  #{$chat},
+  #{$chat-header} {
+    background: $bg;
+    border: none;
+  }
+
+  #{$chat-header-children}::after,
+  #{$chat-inner}::before,
+  #{$chat-form}::before {
+    content: none;
+  }
+
+  #{$chat-content} {
+    background: transparent;
+  }
+
+  // the fade drawn over the bottom of the message list
+  #{$chat-gradient} {
+    display: none;
+  }
+
+  // message box
+  #{$text-area},
+  #{$text-area-box} {
+    background: $bg-alt;
+    border-radius: $border-radius;
+    border: none;
+  }
+
+  #{$text-placeholder} {
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    font-size: 12px;
+  }
+}

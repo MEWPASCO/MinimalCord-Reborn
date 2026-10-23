@@ -1,0 +1,35 @@
+// Text selection and scrollbars, as in the original MinimalCord.
+// Deliberately left out: the original's `backface-visibility: hidden` on <html>
+// and on every <span>. It forces Discord to treat huge numbers of elements as
+// separate compositing candidates, which costs GPU time on every frame.
+
+@use "config" as *;
+@use "palette" as *;
+
+::selection {
+  background: $accent;
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece {
+  border-color: transparent !important;
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: $border-radius !important;
+  border: none !important;
+  background-clip: content-box !important;
+  background: $bg-light !important;
+}
+
+::-webkit-scrollbar-corner {
+  visibility: hidden !important;
+}

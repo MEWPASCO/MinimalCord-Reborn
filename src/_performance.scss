@@ -1,0 +1,22 @@
+// Switches live in _config.scss.
+
+@use "config" as *;
+
+// Decorative glass / ellipse overlays drawn on top of the server header in the
+// newer client. Attribute selectors match on the class name and ignore the
+// hash that Discord changes with every build.
+@if $hide-header-effects {
+  [class*="headerGlass_"],
+  [class*="headerEllipseBackdrop_"],
+  [class*="headerEllipseForeground_"] {
+    display: none;
+  }
+}
+
+// Large blur radius Discord applies to "obscured" backgrounds.
+@if $disable-blur {
+  .theme-dark.theme-dark.theme-dark,
+  .theme-midnight.theme-midnight.theme-midnight {
+    --__obscured-background-blur-radius: 0px;
+  }
+}

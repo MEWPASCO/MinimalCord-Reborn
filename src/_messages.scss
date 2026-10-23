@@ -1,0 +1,70 @@
+// Every message on its own rounded card, as in the original MinimalCord.
+// Switch off with $message-cards in _config.scss if the layout looks wrong
+// after a Discord update, and Discord's own message layout is used instead.
+//
+// Differences from the original, for speed: the card is the message's own
+// background instead of an extra ::before layer per message, and the mention
+// bar is an inset shadow instead of two extra pseudo-elements.
+
+@use "config" as *;
+@use "palette" as *;
+@use "hooks" as *;
+
+@if $message-cards {
+  html {
+    #{$msg} {
+      background: $bg-alt;
+      border-radius: $border-radius;
+      margin-left: 16px;
+      margin-right: 8px;
+      padding-top: $message-padding;
+      padding-bottom: $message-padding;
+      padding-left: 0;
+    }
+
+    #{$msg}#{$msg-start} {
+      margin-top: $message-spacing;
+    }
+
+    // consecutive messages from one author merge into a single card
+    #{$msg}:not(#{$msg-start}) {
+      margin-top: -$message-padding;
+      padding-top: 0.175rem;
+    }
+
+    #{$msg-contents} {
+      margin-left: 40px + $message-padding * 2;
+    }
+
+    #{$msg-avatar} {
+      left: $message-padding;
+      top: $message-padding;
+      margin-top: 0;
+    }
+
+    #{$msg-timestamp-alt} {
+      width: 40px + $message-padding;
+      display: flex;
+      justify-content: center;
+    }
+
+    #{$msg-reply} {
+      margin-left: $message-padding + 56px;
+    }
+
+    #{$msg}#{$msg-mentioned} {
+      background: var(--message-mentioned-background-default);
+      box-shadow: inset 2px 0 0 $yellow;
+    }
+  }
+}
+
+// code blocks sit one step darker than the message card
+html {
+  pre code,
+  code.inline {
+    background: $bg-dark;
+    border-radius: $border-radius;
+    border: none;
+  }
+}

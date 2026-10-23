@@ -1,0 +1,13 @@
+// Context menu: the focused item takes the accent colour.
+// Menu and popout backgrounds come from the variables in _surfaces.scss.
+
+@use "config" as *;
+@use "palette" as *;
+@use "hooks" as *;
+
+html {
+  #{$menu-item} {
+    background: $accent;
+    color: #fff;
+  }
+}

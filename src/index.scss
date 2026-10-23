@@ -1,11 +1,17 @@
-/*!
+/**
  * @name MinimalCord Reborn
- * @author Wolfy (Original concept by Gibbu)
+ * @author Wolfÿ
  * @version 2.0.0
- * @description Clean-slate, zero-lag modular SCSS rewrite of MinimalCord.
+ * @description A lightweight rewrite of MinimalCord (originally by Gibbu) for the current Discord client. Dark only.
  * @source https://github.com/MEWPASCO/MinimalCord-Reborn
- * @updateUrl https://raw.githubusercontent.com/MEWPASCO/MinimalCord-Reborn/main/dist/MinimalCord.theme.css
  */
 
-@use 'variables';
-@use 'backgrounds';
+@use "surfaces";
+@use "base";
+@use "frame";
+@use "channels";
+@use "chat";
+@use "messages";
+@use "members";
+@use "menus";
+@use "performance";
