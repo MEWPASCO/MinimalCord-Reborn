@@ -1,122 +1,363 @@
-/*!
+@charset "UTF-8";
+/**
  * @name MinimalCord Reborn
- * @author Wolfy (Original concept by Gibbu)
+ * @author Wolfÿ
  * @version 2.0.0
- * @description Clean-slate, zero-lag modular SCSS rewrite of MinimalCord.
+ * @description A lightweight rewrite of MinimalCord (originally by Gibbu) for the current Discord client. Dark only.
  * @source https://github.com/MEWPASCO/MinimalCord-Reborn
- * @updateUrl https://raw.githubusercontent.com/MEWPASCO/MinimalCord-Reborn/main/dist/MinimalCord.theme.css
  */
-:root,
-html,
-body,
-.theme-dark,
-.theme-darker,
-.theme-midnight,
-.visual-refresh,
-div[class*=theme-] {
-  /* =========================================================================
-     1. MINIMALCORD MASTER PALETTE (Reuse these across all files!)
-     ========================================================================= */
-  --mc-bg-sidebars: #121215; /* Darkest matte frame (Servers, Channels, Members, User bar) */
-  --mc-bg-chat: #18181b; /* Center stage (Chat & Top Header) */
-  --mc-bg-deep: #0c0c0e; /* Recessed boxes (Embeds, Search bar, Codeblocks) */
-  --mc-bg-popout: #141417; /* Floating popouts & modals */
-  --mc-bg-input: #202026; /* Chat message bar & role pills */
-  --mc-pill-channel: #25252b; /* Active channel highlight */
-  --mc-accent-blue: #3875d7; /* Active member highlight & primary accent */
-  --mc-radius: 6px; /* Global border radius */
-  /* =========================================================================
-     2. DISCORD ENGINE VARIABLE MAPPING
-     ========================================================================= */
-  /* Outer Frame & Sidebars */
-  --app-frame-background: var(--mc-bg-sidebars) !important;
-  --background-base-lowest: var(--mc-bg-sidebars) !important;
-  --background-base-lower: var(--mc-bg-sidebars) !important;
-  --channel-background-default: var(--mc-bg-sidebars) !important;
-  --custom-channel-members-bg: var(--mc-bg-sidebars) !important;
-  --panel-bg: var(--mc-bg-sidebars) !important;
-  --bg-base-secondary: var(--mc-bg-sidebars) !important;
-  --bg-base-tertiary: var(--mc-bg-sidebars) !important;
-  --background-secondary: var(--mc-bg-sidebars) !important;
-  --background-secondary-alt: var(--mc-bg-sidebars) !important;
-  --background-tertiary: var(--mc-bg-sidebars) !important;
-  /* Main Chat Surfaces */
-  --chat-background: var(--mc-bg-chat) !important;
-  --chat-background-default: var(--mc-bg-chat) !important;
-  --background-base-low: var(--mc-bg-chat) !important;
-  --home-background: var(--mc-bg-chat) !important;
-  --bg-base-primary: var(--mc-bg-chat) !important;
-  --background-primary: var(--mc-bg-chat) !important;
-  /* Deep Recessed Elements */
-  --embed-background: var(--mc-bg-deep) !important;
-  --embed-background-alternate: var(--mc-bg-deep) !important;
-  --card-background-default: var(--mc-bg-deep) !important;
-  --card-secondary-bg: var(--mc-bg-deep) !important;
-  --input-background-default: var(--mc-bg-deep) !important;
-  --bg-surface-raised: var(--mc-bg-deep) !important;
-  /* Floating Surfaces */
-  --modal-background: var(--mc-bg-popout) !important;
-  --modal-footer-background: var(--mc-bg-popout) !important;
-  --background-surface-high: var(--mc-bg-popout) !important;
-  --background-surface-higher: var(--mc-bg-popout) !important;
-  --background-surface-highest: var(--mc-bg-popout) !important;
-  --bg-surface-overlay: var(--mc-bg-popout) !important;
-  --background-floating: var(--mc-bg-popout) !important;
-  /* Kill Default Panel Borders */
-  --chat-border: transparent !important;
+.theme-dark.theme-dark.theme-dark, .theme-midnight.theme-midnight.theme-midnight {
+  --brand-100: rgb(91.9607843137%, 95.137254902%, 98.1176470588%);
+  --brand-100-hsl: 209 62% 95%;
+  --brand-130: rgb(90.3529411765%, 94.1647058824%, 97.7411764706%);
+  --brand-130-hsl: 209 62% 94%;
+  --brand-160: rgb(88.7450980392%, 93.1921568627%, 97.3647058824%);
+  --brand-160-hsl: 209 62% 93%;
+  --brand-200: rgb(85.5294117647%, 91.2470588235%, 96.6117647059%);
+  --brand-200-hsl: 209 62% 91%;
+  --brand-230: rgb(82.3137254902%, 89.3019607843%, 95.8588235294%);
+  --brand-230-hsl: 209 62% 89%;
+  --brand-260: rgb(77.4901960784%, 86.3843137255%, 94.7294117647%);
+  --brand-260-hsl: 209 62% 86%;
+  --brand-300: rgb(72.6666666667%, 83.4666666667%, 93.6%);
+  --brand-300-hsl: 209 62% 83%;
+  --brand-330: rgb(66.2352941176%, 79.5764705882%, 92.0941176471%);
+  --brand-330-hsl: 209 62% 79%;
+  --brand-345: rgb(59.8039215686%, 75.6862745098%, 90.5882352941%);
+  --brand-345-hsl: 209 62% 75%;
+  --brand-360: rgb(53.3725490196%, 71.7960784314%, 89.0823529412%);
+  --brand-360-hsl: 209 62% 71%;
+  --brand-400: rgb(43.7254901961%, 65.9607843137%, 86.8235294118%);
+  --brand-400-hsl: 209 62% 65%;
+  --brand-430: rgb(35.6862745098%, 61.0980392157%, 84.9411764706%);
+  --brand-430-hsl: 209 62% 60%;
+  --brand-460: rgb(27.6470588235%, 56.2352941176%, 83.0588235294%);
+  --brand-460-hsl: 209 62% 55%;
+  --brand-500: #3283cf;
+  --brand-500-hsl: 209 62% 50%;
+  --brand-530: rgb(18.0392156863%, 47.262745098%, 74.6823529412%);
+  --brand-530-hsl: 209 61% 46%;
+  --brand-560: rgb(16.0784313725%, 42.1254901961%, 66.5647058824%);
+  --brand-560-hsl: 209 61% 41%;
+  --brand-600: rgb(14.1176470588%, 36.9882352941%, 58.4470588235%);
+  --brand-600-hsl: 209 61% 36%;
+  --brand-630: rgb(12.1568627451%, 31.8509803922%, 50.3294117647%);
+  --brand-630-hsl: 209 61% 31%;
+  --brand-660: rgb(10.1960784314%, 26.7137254902%, 42.2117647059%);
+  --brand-660-hsl: 209 61% 26%;
+  --brand-700: rgb(8.2352941176%, 21.5764705882%, 34.0941176471%);
+  --brand-700-hsl: 209 61% 21%;
+  --brand-730: rgb(6.6666666667%, 17.4666666667%, 27.6%);
+  --brand-730-hsl: 209 61% 17%;
+  --brand-760: rgb(5.4901960784%, 14.3843137255%, 22.7294117647%);
+  --brand-760-hsl: 209 61% 14%;
+  --brand-800: rgb(4.3137254902%, 11.3019607843%, 17.8588235294%);
+  --brand-800-hsl: 209 61% 11%;
+  --brand-830: rgb(3.137254902%, 8.2196078431%, 12.9882352941%);
+  --brand-830-hsl: 209 61% 8%;
+  --brand-860: rgb(2.1568627451%, 5.6509803922%, 8.9294117647%);
+  --brand-860-hsl: 209 61% 6%;
+  --brand-900: rgb(0.9803921569%, 2.568627451%, 4.0588235294%);
+  --brand-900-hsl: 209 61% 3%;
+  --brand-05a: rgba(50, 131, 207, 0.05);
+  --brand-10a: rgba(50, 131, 207, 0.1);
+  --brand-15a: rgba(50, 131, 207, 0.15);
+  --brand-20a: rgba(50, 131, 207, 0.2);
+  --brand-25a: rgba(50, 131, 207, 0.25);
+  --brand-30a: rgba(50, 131, 207, 0.3);
+  --brand-35a: rgba(50, 131, 207, 0.35);
+  --brand-40a: rgba(50, 131, 207, 0.4);
+  --brand-45a: rgba(50, 131, 207, 0.45);
+  --brand-50a: rgba(50, 131, 207, 0.5);
+  --brand-55a: rgba(50, 131, 207, 0.55);
+  --brand-60a: rgba(50, 131, 207, 0.6);
+  --brand-65a: rgba(50, 131, 207, 0.65);
+  --brand-70a: rgba(50, 131, 207, 0.7);
+  --brand-75a: rgba(50, 131, 207, 0.75);
+  --brand-80a: rgba(50, 131, 207, 0.8);
+  --brand-85a: rgba(50, 131, 207, 0.85);
+  --brand-90a: rgba(50, 131, 207, 0.9);
+  --brand-95a: rgba(50, 131, 207, 0.95);
+  --background-brand: #3283cf;
+  --control-primary-background-default: #3283cf;
+  --radio-background-selected-default: #3283cf;
+  --switch-background-selected-default: #3283cf;
+  --checkbox-background-selected-default: #3283cf;
+  --badge-primary-background: #3283cf;
+  --button-outline-brand-background-hover: #3283cf;
+  --interactive-accent-background-selected: #3283cf;
+  --interactive-accent-background-hover: #3283cf;
+  --progressbar-indicator-background: #3283cf;
+  --chart-brand: #3283cf;
+  --control-primary-background-hover: rgb(18.0392156863%, 47.262745098%, 74.6823529412%);
+  --radio-background-selected-hover: rgb(18.0392156863%, 47.262745098%, 74.6823529412%);
+  --switch-background-selected-hover: rgb(18.0392156863%, 47.262745098%, 74.6823529412%);
+  --checkbox-background-selected-hover: rgb(18.0392156863%, 47.262745098%, 74.6823529412%);
+  --control-primary-background-active: rgb(14.1176470588%, 36.9882352941%, 58.4470588235%);
+  --radio-background-active: rgb(14.1176470588%, 36.9882352941%, 58.4470588235%);
+  --switch-background-active: rgb(14.1176470588%, 36.9882352941%, 58.4470588235%);
+  --checkbox-background-active: rgb(14.1176470588%, 36.9882352941%, 58.4470588235%);
+  --interactive-accent-background-active: rgb(14.1176470588%, 36.9882352941%, 58.4470588235%);
+  --button-outline-brand-border-active: rgb(16.0784313725%, 42.1254901961%, 66.5647058824%);
+  --text-brand: rgb(43.7254901961%, 65.9607843137%, 86.8235294118%);
+  --icon-brand: rgb(43.7254901961%, 65.9607843137%, 86.8235294118%);
+  --control-brand-foreground: rgb(53.3725490196%, 71.7960784314%, 89.0823529412%);
+  --control-brand-foreground-new: rgb(53.3725490196%, 71.7960784314%, 89.0823529412%);
+  --mention-background: rgba(50, 131, 207, 0.24);
+  --reaction-background-reacted-default: rgba(50, 131, 207, 0.24);
+  --reaction-background-reacted-hover: rgba(50, 131, 207, 0.24);
+  --togglebutton-background-selected-hover: rgba(50, 131, 207, 0.24);
+  --badge-rare-background: rgba(50, 131, 207, 0.24);
+  --message-highlight-background-default: rgba(50, 131, 207, 0.16);
+  --togglebutton-background-selected: rgba(50, 131, 207, 0.16);
+  --message-highlight-background-hover: rgba(50, 131, 207, 0.12);
+  --background-code: rgba(50, 131, 207, 0.08);
+  --datepicker-range-background-default: rgba(50, 131, 207, 0.4);
+  --datepicker-range-background-hover: rgba(50, 131, 207, 0.6);
+  --background-primary: hsl(218, 15%, 11%);
+  --bg-base-primary: hsl(218, 15%, 11%);
+  --chat-background-default: hsl(218, 15%, 11%);
+  --chat-background: hsl(218, 15%, 11%);
+  --home-background: hsl(218, 15%, 11%);
+  --background-base-low: hsl(218, 15%, 11%);
+  --background-secondary: hsl(218, 15%, 11%);
+  --background-secondary-alt: hsl(218, 15%, 11%);
+  --background-tertiary: hsl(218, 15%, 11%);
+  --bg-base-secondary: hsl(218, 15%, 11%);
+  --bg-base-tertiary: hsl(218, 15%, 11%);
+  --background-base-lower: hsl(218, 15%, 11%);
+  --channel-background-default: hsl(218, 15%, 11%);
+  --panel-bg: hsl(218, 15%, 11%);
+  --custom-channel-members-bg: hsl(218, 15%, 11%);
+  --modal-footer-background: hsl(218, 15%, 11%);
+  --app-frame-background: hsl(218, 15%, 9%);
+  --background-base-lowest: hsl(218, 15%, 9%);
+  --guild-profile-banner-background-default: hsl(218, 15%, 9%);
+  --user-profile-note-background-focus: hsl(218, 15%, 9%);
+  --embed-background: hsl(218, 15%, 9%);
+  --embed-background-alternate: hsl(218, 15%, 9%);
+  --polls-normal-image-background: hsl(218, 15%, 9%);
+  --channeltextarea-background: hsl(218, 15%, 13%);
+  --bg-surface-raised: hsl(218, 15%, 13%);
+  --background-surface-high: hsl(218, 15%, 13%);
+  --card-background-default: hsl(218, 15%, 13%);
+  --modal-background: hsl(218, 15%, 13%);
+  --background-floating: hsl(218, 15%, 14.5%);
+  --bg-surface-overlay: hsl(218, 15%, 14.5%);
+  --background-surface-higher: hsl(218, 15%, 14.5%);
+  --custom-bg-surface-overlay: rgba(12.325%, 13.92%, 16.675%, 0.8);
+  --background-surface-highest: hsl(218, 15%, 16%);
+  --background-accent: hsl(218, 15%, 16%);
+  --user-profile-overlay-background: hsl(218, 15%, 16%);
+  --user-profile-toolbar-background: hsl(218, 15%, 16%);
+  --user-profile-activity-toolbar-background: hsl(218, 15%, 16%);
+  --text-normal: hsl(218, 10%, 65%);
+  --channels-default: hsl(218, 10%, 65%);
+  --text-muted: hsl(218, 10%, 30%);
+  --header-primary: #fff;
+  --font-primary: "Inter", "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: var(--font-primary);
 }
 
-/* 1. Outer Frame, Top Windows Bar & Left Sidebars -> var(--mc-bg-sidebars) */
-div.bg__960e4,
-div.bar_c38106,
-div.sidebar__5e434,
-nav.guilds__5e434,
-nav.guilds__5e434 .scroller_ef3116,
-div.sidebarList__5e434,
-nav.container__2637a,
-div#channels.scroller__629e4,
-div.container_f37cb1,
-header.header_f37cb1,
-section.panels__5e434,
-div.wrapper_e131a9,
-div.container_e131a9,
-div.container__37e49 {
-  background: var(--mc-bg-sidebars) !important;
-  background-color: var(--mc-bg-sidebars) !important;
+::selection {
+  background: #3283cf;
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece {
+  border-color: transparent !important;
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px !important;
   border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
+  background-clip: content-box !important;
+  background: hsl(218, 15%, 16%) !important;
 }
 
-/* 2. Right Member List -> var(--mc-bg-sidebars) */
-div.container_c8ffbb,
-aside.membersWrap_c8ffbb,
-div.members_c8ffbb,
-div.members_c8ffbb > div.content_d125d2,
-div.vc-membercount-widget {
-  background: var(--mc-bg-sidebars) !important;
-  background-color: var(--mc-bg-sidebars) !important;
-  border: none !important;
+::-webkit-scrollbar-corner {
+  visibility: hidden !important;
 }
 
-/* 3. Center Chat & Top Channel Header -> var(--mc-bg-chat) */
-div.page__5e434,
-div.chat_f75fb0,
-div.subtitleContainer_f75fb0,
-section.title_f75fb0.container__9293f,
-div.content_f75fb0,
-main.chatContent_f75fb0,
-div.messagesWrapper__36d07,
-div.scroller__36d07,
-form.form_f75fb0 {
-  background: var(--mc-bg-chat) !important;
-  background-color: var(--mc-bg-chat) !important;
-  border: none !important;
-  box-shadow: none !important;
+html nav[class*=guilds_],
+html nav[class*=guilds_] [class*=scrollerBase_] {
+  background: hsl(218, 15%, 9%);
+}
+html nav[class*=guilds_] [class*=scrollerBase_]::-webkit-scrollbar {
+  display: none;
+}
+html .sidebar__5e434,
+html nav.container__2637a {
+  background: hsl(218, 15%, 11%);
+}
+html [class*=sidebarList_] {
+  border: none;
+  border-radius: 0;
+}
+html header.header_f37cb1 {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+html [class*=panels_] {
+  background: hsl(218, 15%, 11%);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+html [class*=panels_] .container__37e49 {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+html div.page__5e434 {
+  border: none;
 }
 
-/* 4. Remove Bottom Chat Gradient Overlay */
-div.chatGradient__36d07,
-div.chatGradientBase__36d07 {
-  display: none !important;
+html .wrapper__2ea32 {
+  height: auto;
+  margin-left: 0;
+  margin-bottom: 2px;
+  border-radius: 0 5px 5px 0;
+}
+html .link__2ea32 {
+  padding-left: 16px;
+}
+html .wrapper__2ea32[class*=typeThread_] .link__2ea32 {
+  padding-left: 42px;
+}
+html .wrapper__2ea32[class*=modeMuted_] [class*=name_] {
+  color: hsl(218, 10%, 30%);
+}
+html .wrapper__2ea32[class*=modeSelected_] [class*=icon_] {
+  color: #fff;
+}
+html .wrapper__2ea32[class*=modeSelected_]::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 4px;
+  height: calc(100% - 2px);
+  background: #3283cf;
+  z-index: 1;
+}
+
+html .chat_f75fb0,
+html .container__9293f {
+  background: hsl(218, 15%, 11%);
+  border: none;
+}
+html .children__9293f::after,
+html .chat_f75fb0 .content_f75fb0::before,
+html form.form_f75fb0::before {
+  content: none;
+}
+html [class*=chatContent_] {
+  background: transparent;
+}
+html [class*=chatGradient_] {
+  display: none;
+}
+html [class*=channelTextArea_],
+html [class*=scrollableContainer_] {
+  background: hsl(218, 15%, 13%);
+  border-radius: 5px;
+  border: none;
+}
+html [class*=channelTextArea_] [class*=placeholder_] {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  font-size: 12px;
+}
+
+html [class*=cozy_] {
+  background: hsl(218, 15%, 13%);
+  border-radius: 5px;
+  margin-left: 16px;
+  margin-right: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 0;
+}
+html [class*=cozy_][class*=groupStart_] {
+  margin-top: 10px;
+}
+html [class*=cozy_]:not([class*=groupStart_]) {
+  margin-top: -10px;
+  padding-top: 0.175rem;
+}
+html [class*=cozy_] [class*=contents_] {
+  margin-left: 60px;
+}
+html [class*=cozy_] [class*=avatar_] {
+  left: 10px;
+  top: 10px;
+  margin-top: 0;
+}
+html [class*=cozy_] [class*=timestamp_][class*=alt_] {
+  width: 50px;
+  display: flex;
+  justify-content: center;
+}
+html [class*=cozy_] [class*=repliedMessage_] {
+  margin-left: 66px;
+}
+html [class*=cozy_][class*=mentioned_] {
+  background: var(--message-mentioned-background-default);
+  box-shadow: inset 2px 0 0 rgb(219, 171, 9);
+}
+
+html pre code,
+html code.inline {
+  background: hsl(218, 15%, 9%);
+  border-radius: 5px;
+  border: none;
+}
+
+html [class*=members_],
+html [class*=members_] > div {
+  background: transparent;
+  border: none;
+}
+html [class*=member_] {
+  background: transparent;
+}
+html [class*=member_]:hover [class*=layout_] {
+  background: hsl(218, 15%, 13%);
+  width: 100%;
+}
+html [class*=member_]:active [class*=layout_] {
+  background: hsl(218, 15%, 16%);
+  width: 100%;
+}
+html [class*=member_][class*=selected_] [class*=layout_] {
+  background: #3283cf;
+  width: 100%;
+  color: #fff;
+}
+
+html [role=menu] [role^=menuitem][class*=focused_]:not([class*=colorDanger_]) {
+  background: #3283cf;
+  color: #fff;
+}
+
+[class*=headerGlass_],
+[class*=headerEllipseBackdrop_],
+[class*=headerEllipseForeground_] {
+  display: none;
+}
+
+.theme-dark.theme-dark.theme-dark,
+.theme-midnight.theme-midnight.theme-midnight {
+  --__obscured-background-blur-radius: 0px;
 }
