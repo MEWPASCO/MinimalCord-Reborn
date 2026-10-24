@@ -151,6 +151,9 @@
   --user-profile-overlay-background: hsl(218, 15%, 16%);
   --user-profile-toolbar-background: hsl(218, 15%, 16%);
   --user-profile-activity-toolbar-background: hsl(218, 15%, 16%);
+  --message-background-hover: hsl(218, 15%, 13%);
+  --chat-border: transparent;
+  --app-frame-border: transparent;
   --text-normal: hsl(218, 10%, 65%);
   --channels-default: hsl(218, 10%, 65%);
   --text-muted: hsl(218, 10%, 30%);
@@ -221,6 +224,10 @@ html [class*=panels_] .container__37e49 {
 html div.page__5e434 {
   border: none;
 }
+html .bar_c38106 {
+  border: none;
+  box-shadow: none;
+}
 
 html .wrapper__2ea32 {
   height: auto;
@@ -264,6 +271,10 @@ html form.form_f75fb0::before {
 html [class*=chatContent_] {
   background: transparent;
 }
+html .chat_f75fb0 .content_f75fb0 {
+  border: none;
+  box-shadow: none;
+}
 html [class*=chatGradient_] {
   display: none;
 }
@@ -283,38 +294,29 @@ html [class*=channelTextArea_] [class*=placeholder_] {
 html [class*=cozy_] {
   background: hsl(218, 15%, 13%);
   border-radius: 5px;
-  margin-left: 16px;
+  margin-left: 8px;
   margin-right: 8px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 0;
+  padding-bottom: 5px;
 }
 html [class*=cozy_][class*=groupStart_] {
   margin-top: 10px;
 }
-html [class*=cozy_]:not([class*=groupStart_]) {
-  margin-top: -10px;
-  padding-top: 0.175rem;
-}
-html [class*=cozy_] [class*=contents_] {
-  margin-left: 60px;
-}
-html [class*=cozy_] [class*=avatar_] {
-  left: 10px;
-  top: 10px;
-  margin-top: 0;
-}
-html [class*=cozy_] [class*=timestamp_][class*=alt_] {
-  width: 50px;
-  display: flex;
-  justify-content: center;
-}
-html [class*=cozy_] [class*=repliedMessage_] {
-  margin-left: 66px;
-}
 html [class*=cozy_][class*=mentioned_] {
-  background: var(--message-mentioned-background-default);
-  box-shadow: inset 2px 0 0 rgb(219, 171, 9);
+  background: linear-gradient(90deg, rgb(234, 152, 0) 2px, transparent 2px), var(--message-mentioned-background-default);
+}
+html [class*=cozy_][class*=mentioned_]::before {
+  display: none;
+}
+html li[class*=messageListItem_] {
+  position: relative;
+}
+html li[class*=messageListItem_]:hover::after {
+  content: "";
+  position: absolute;
+  inset: 0 8px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.045);
+  pointer-events: none;
 }
 
 html pre code,
@@ -329,21 +331,13 @@ html [class*=members_] > div {
   background: transparent;
   border: none;
 }
-html [class*=member_] {
-  background: transparent;
+html [class*=membersWrap_],
+html .container_c8ffbb {
+  border: none;
+  box-shadow: none;
 }
-html [class*=member_]:hover [class*=layout_] {
-  background: hsl(218, 15%, 13%);
-  width: 100%;
-}
-html [class*=member_]:active [class*=layout_] {
-  background: hsl(218, 15%, 16%);
-  width: 100%;
-}
-html [class*=member_][class*=selected_] [class*=layout_] {
-  background: #3283cf;
-  width: 100%;
-  color: #fff;
+html [class*=member_][class*=selected_] {
+  background-color: rgba(50, 131, 207, 0.45);
 }
 
 html [role=menu] [role^=menuitem][class*=focused_]:not([class*=colorDanger_]) {
