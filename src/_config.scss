@@ -17,6 +17,9 @@ $message-spacing: 10px; // space between message groups
 $mention-color: rgb(234, 152, 0); // bar on messages that mention you
 $mention-bar-width: 2px;
 $message-hover: 0.045; // how much a hovered message lightens, 0 = no hover
+$message-padding-top: 6px; // room above the name and avatar of each message group
+$chat-bottom-space: 26px;  // empty block under the newest message. About 16px of it sits behind
+                           // the message box, so the visible gap is roughly this minus 16px
 
 // Font (see README to load Inter)
 $font: "Inter";
@@ -25,3 +28,4 @@ $font: "Inter";
 $message-cards: true;       // each message sits on its own rounded card, like the original
 $hide-header-effects: true; // hides the glass / ellipse overlays on the server header
 $disable-blur: true;        // turns off Discord's large background blur radius
+$autohide-scrollbar: true;  // scrollbars only show while the pointer is over the area they scroll

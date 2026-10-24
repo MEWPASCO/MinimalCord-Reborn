@@ -32,6 +32,13 @@ html {
     display: none;
   }
 
+  // empty space between the newest message and the message box
+  #{$chat-spacer} {
+    height: $chat-bottom-space;
+  }
+
+  // (scrollbar auto-hide now lives in _base.scss and covers every scroller)
+
   // message box
   #{$text-area},
   #{$text-area-box} {

@@ -23,6 +23,7 @@
 
     #{$msg}#{$msg-start} {
       margin-top: $message-spacing;
+      padding-top: $message-padding-top;
     }
 
     // Messages that mention you: amber tint plus a bar on the left edge.

@@ -1,0 +1,44 @@
+// Friends page: no divider lines, one flat colour per Active Now card.
+// Hash-proof selectors ([class*=...]); if Discord renames them, fix _hooks.scss.
+
+@use "config" as *;
+@use "palette" as *;
+@use "hooks" as *;
+
+html {
+  // friends list: no line between people
+  #{$friend-row},
+  #{$friend-row}::before,
+  #{$friend-row}::after {
+    border: none;
+    box-shadow: none;
+  }
+
+  // Active Now: no dividers, no separate header fill
+  #{$now-column},
+  #{$now-parts} {
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  #{$now-parts} {
+    background-color: transparent;
+  }
+
+  // the old card guesses: one colour for the whole card
+  #{$activity-card} {
+    background: $bg-alt;
+    border: none;
+    border-radius: $border-radius;
+    overflow: hidden;
+  }
+
+  #{$activity-card}:hover {
+    background: $bg-light-alt;
+  }
+
+  #{$activity-section} {
+    background: transparent;
+    border: none;
+  }
+}

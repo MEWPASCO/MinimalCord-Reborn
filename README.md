@@ -39,6 +39,9 @@ https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap
 | `_base.scss` | Selection colour, scrollbars |
 | `_frame.scss` | Flat server list, sidebar and user panel |
 | `_channels.scss` | Channel list with the accent bar |
+| `_dms.scss` | DM panel colour and brighter names in the DM list |
+| `_friends.scss` | Active Now cards on the friends page |
+| `_profiles.scss` | Hides the scrollbar under the profile tabs |
 | `_chat.scss` | Channel header and message box |
 | `_messages.scss` | Message cards, mentions, code blocks |
 | `_members.scss` | Member list |

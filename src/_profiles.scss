@@ -1,0 +1,16 @@
+// Profiles: the Board / Activity / Mutual Friends / Mutual Servers tab strip is
+// a horizontal scroller (this is Discord's own design, not a plugin). It
+// showed a scrollbar under the tabs on hover; the tabs still scroll, the bar
+// is just not drawn.
+
+@use "hooks" as *;
+
+html {
+  #{$tab-scroller} {
+    scrollbar-width: none;
+  }
+
+  #{$tab-scroller}::-webkit-scrollbar {
+    display: none;
+  }
+}

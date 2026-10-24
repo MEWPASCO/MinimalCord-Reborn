@@ -25,6 +25,11 @@ html {
     border-radius: 0;
   }
 
+  // the panel inside it: a server's channel list, or the DM list in the DM view
+  #{$sidebar-list} > nav {
+    background: $bg;
+  }
+
   #{$guild-header} {
     background: transparent;
     box-shadow: none;

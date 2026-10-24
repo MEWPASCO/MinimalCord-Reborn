@@ -1,0 +1,24 @@
+// Direct messages and the friends list.
+//
+// 1. Names. The current client colours DM and friends-list names with
+//    --text-muted. This theme keeps that variable very dark on purpose (the
+//    original MinimalCord did too, for muted channels), which made those names
+//    hard to read. Brighten it inside the DM panel only.
+//
+// 2. Background. The DM panel took the darkest tone, the same as the server
+//    list, so the two blended together and the panel stopped short of the
+//    content area, leaving a lighter strip beside it. Give it the colour of a
+//    server's channel list instead.
+//
+// The selector is repeated so it beats the theme-class rule in _surfaces.scss,
+// which also sets these variables on elements that carry a theme class.
+
+@use "palette" as *;
+@use "hooks" as *;
+
+html :is(#{$dm-sidebar}):is(#{$dm-sidebar}):is(#{$dm-sidebar}) {
+  --text-muted: #{$text-dim};
+  --background-base-lowest: #{$bg};
+  --app-frame-background: #{$bg};
+  background-color: $bg;
+}

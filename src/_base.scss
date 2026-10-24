@@ -27,7 +27,19 @@
   border-radius: $border-radius !important;
   border: none !important;
   background-clip: content-box !important;
-  background: $bg-light !important;
+  // With $autohide-scrollbar the thumb is invisible until the pointer is over
+  // the scrolling area (chat, friends list, settings, code blocks...).
+  @if $autohide-scrollbar {
+    background: transparent !important;
+  } @else {
+    background: $bg-light !important;
+  }
+}
+
+@if $autohide-scrollbar {
+  :hover::-webkit-scrollbar-thumb {
+    background: $bg-light !important;
+  }
 }
 
 ::-webkit-scrollbar-corner {

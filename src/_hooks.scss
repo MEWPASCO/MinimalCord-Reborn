@@ -22,6 +22,21 @@ $panel-account: '.container__37e49';
 $page: 'div.page__5e434';
 $title-bar: '.bar_c38106'; // unchecked: name taken from the earlier backgrounds file
 
+// ---- Direct messages -------------------------------------------------------
+// The whole left panel in the DM view: search box, Friends / Nitro / Shop /
+// Quests rows, Pins and the DM list. Unchecked: class name from the original theme.
+$dm-sidebar: '[class*="privateChannels_"], nav[aria-label="Direct Messages"]';
+
+// ---- Friends page and profiles --------------------------------------------
+// Unchecked: both come from the original MinimalCord, which was updated for the
+// current client shortly before this rewrite.
+$activity-card: '.wrapper__00943';    // one "Active Now" card
+$activity-section: '.section__00943'; // header / row inside that card
+$friend-row: '[class*="peopleListItem_"]';   // one row in the friends list
+$now-column: '[class*="nowPlayingColumn_"]'; // whole Active Now column
+$now-parts: '[class*="nowPlayingColumn_"] [class*="section_"], [class*="nowPlayingColumn_"] [class*="header_"], [class*="nowPlayingColumn_"] [class*="wrapper_"]'; // cards, headers, rows inside it
+$tab-scroller: '[class*="tabListScroller_"], [role="tablist"]'; // Board / Activity / Mutual tabs on profiles
+
 // ---- Chat ------------------------------------------------------------------
 $chat: '.chat_f75fb0';
 $chat-inner: '.chat_f75fb0 .content_f75fb0';
@@ -29,6 +44,7 @@ $chat-header: '.container__9293f';
 $chat-header-children: '.children__9293f';
 $chat-content: '[class*="chatContent_"]';
 $chat-gradient: '[class*="chatGradient_"]';
+$chat-spacer: '[class*="scrollerSpacer_"]'; // unchecked: empty block after the last message in older clients
 $chat-form: 'form.form_f75fb0';
 $text-area: '[class*="channelTextArea_"]';
 $text-area-box: '[class*="scrollableContainer_"]'; // unchecked
