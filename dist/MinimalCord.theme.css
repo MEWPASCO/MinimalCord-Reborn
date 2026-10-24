@@ -183,6 +183,10 @@
   border-radius: 5px !important;
   border: none !important;
   background-clip: content-box !important;
+  background: transparent !important;
+}
+
+:hover::-webkit-scrollbar-thumb {
   background: hsl(218, 15%, 16%) !important;
 }
 
@@ -204,6 +208,9 @@ html nav.container__2637a {
 html [class*=sidebarList_] {
   border: none;
   border-radius: 0;
+}
+html [class*=sidebarList_] > nav {
+  background: hsl(218, 15%, 11%);
 }
 html header.header_f37cb1 {
   background: transparent;
@@ -258,6 +265,48 @@ html .wrapper__2ea32[class*=modeSelected_]::before {
   z-index: 1;
 }
 
+html :is([class*=privateChannels_], nav[aria-label="Direct Messages"]):is([class*=privateChannels_], nav[aria-label="Direct Messages"]):is([class*=privateChannels_], nav[aria-label="Direct Messages"]) {
+  --text-muted: hsl(218, 10%, 55%);
+  --background-base-lowest: hsl(218, 15%, 11%);
+  --app-frame-background: hsl(218, 15%, 11%);
+  background-color: hsl(218, 15%, 11%);
+}
+
+html [class*=peopleListItem_],
+html [class*=peopleListItem_]::before,
+html [class*=peopleListItem_]::after {
+  border: none;
+  box-shadow: none;
+}
+html [class*=nowPlayingColumn_],
+html [class*=nowPlayingColumn_] [class*=section_], html [class*=nowPlayingColumn_] [class*=header_], html [class*=nowPlayingColumn_] [class*=wrapper_] {
+  border-color: transparent;
+  box-shadow: none;
+}
+html [class*=nowPlayingColumn_] [class*=section_], html [class*=nowPlayingColumn_] [class*=header_], html [class*=nowPlayingColumn_] [class*=wrapper_] {
+  background-color: transparent;
+}
+html .wrapper__00943 {
+  background: hsl(218, 15%, 13%);
+  border: none;
+  border-radius: 5px;
+  overflow: hidden;
+}
+html .wrapper__00943:hover {
+  background: hsl(218, 15%, 14.5%);
+}
+html .section__00943 {
+  background: transparent;
+  border: none;
+}
+
+html [class*=tabListScroller_], html [role=tablist] {
+  scrollbar-width: none;
+}
+html [class*=tabListScroller_], html [role=tablist]::-webkit-scrollbar {
+  display: none;
+}
+
 html .chat_f75fb0,
 html .container__9293f {
   background: hsl(218, 15%, 11%);
@@ -277,6 +326,9 @@ html .chat_f75fb0 .content_f75fb0 {
 }
 html [class*=chatGradient_] {
   display: none;
+}
+html [class*=scrollerSpacer_] {
+  height: 26px;
 }
 html [class*=channelTextArea_],
 html [class*=scrollableContainer_] {
@@ -300,6 +352,7 @@ html [class*=cozy_] {
 }
 html [class*=cozy_][class*=groupStart_] {
   margin-top: 10px;
+  padding-top: 6px;
 }
 html [class*=cozy_][class*=mentioned_] {
   background: linear-gradient(90deg, rgb(234, 152, 0) 2px, transparent 2px), var(--message-mentioned-background-default);
