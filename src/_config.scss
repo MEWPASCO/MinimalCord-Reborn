@@ -14,6 +14,9 @@ $dark-bg-lightness: 11%;
 $border-radius: 5px;
 $message-padding: 10px; // space inside each message
 $message-spacing: 10px; // space between message groups
+$mention-color: rgb(234, 152, 0); // bar on messages that mention you
+$mention-bar-width: 2px;
+$message-hover: 0.045; // how much a hovered message lightens, 0 = no hover
 
 // Font (see README to load Inter)
 $font: "Inter";

@@ -49,6 +49,18 @@ $dark: ".theme-dark.theme-dark.theme-dark, .theme-midnight.theme-midnight.theme-
     background-surface-highest, background-accent,
     user-profile-overlay-background, user-profile-toolbar-background,
     user-profile-activity-toolbar-background);
+
+  // Discord tints a hovered message with translucent grey, but on some rows
+  // (system messages) part of the row sits on its own solid background and
+  // stayed darker. Neutralised here; _messages.scss draws the hover instead.
+  @if $message-cards {
+    @include paint($bg-alt, message-background-hover);
+  }
+
+  // Discord's panel dividers. --chat-border is confirmed in the variable dump;
+  // --app-frame-border is the matching name for the frame around the chat and
+  // is harmless if the client does not have it.
+  @include paint(transparent, chat-border, app-frame-border);
 }
 
 @mixin text-vars {

@@ -1,4 +1,9 @@
-// Member list: transparent, with accent highlight on the selected member.
+// Member list: transparent panel, flat rows.
+//
+// Hover is left to Discord on purpose. Its own highlight covers the whole row
+// and lets profile nameplates show through. Two earlier versions added a second
+// highlight on the inner layout, which only covers part of the row, so the row
+// showed two different shades.
 
 @use "config" as *;
 @use "palette" as *;
@@ -11,23 +16,15 @@ html {
     border: none;
   }
 
-  #{$member} {
-    background: transparent;
+  // the vertical line between the chat and the member list
+  #{$members-wrap},
+  #{$members-container} {
+    border: none;
+    box-shadow: none;
   }
 
-  #{$member}:hover [class*="layout_"] {
-    background: $bg-alt;
-    width: 100%;
-  }
-
-  #{$member}:active [class*="layout_"] {
-    background: $bg-light;
-    width: 100%;
-  }
-
-  #{$member}[class*="selected_"] [class*="layout_"] {
-    background: $accent;
-    width: 100%;
-    color: #fff;
+  // the member whose profile is open: accent tint on the whole row
+  #{$member}[class*="selected_"] {
+    background-color: rgba($accent, 0.45);
   }
 }

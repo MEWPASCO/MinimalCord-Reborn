@@ -48,4 +48,10 @@ html {
   #{$page} {
     border: none;
   }
+
+  // the line under the window title bar
+  #{$title-bar} {
+    border: none;
+    box-shadow: none;
+  }
 }

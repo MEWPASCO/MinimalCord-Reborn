@@ -2,9 +2,10 @@
 // Switch off with $message-cards in _config.scss if the layout looks wrong
 // after a Discord update, and Discord's own message layout is used instead.
 //
-// Differences from the original, for speed: the card is the message's own
-// background instead of an extra ::before layer per message, and the mention
-// bar is an inset shadow instead of two extra pseudo-elements.
+// This file only paints the card. It does not move the avatar, the name or the
+// text: Discord's own layout already places those, and overriding it is what
+// misplaced names, avatar frames and squeezed grouped messages in the first
+// version. Vertical padding is added at the bottom only for the same reason.
 
 @use "config" as *;
 @use "palette" as *;
@@ -15,46 +16,44 @@
     #{$msg} {
       background: $bg-alt;
       border-radius: $border-radius;
-      margin-left: 16px;
+      margin-left: 8px;
       margin-right: 8px;
-      padding-top: $message-padding;
-      padding-bottom: $message-padding;
-      padding-left: 0;
+      padding-bottom: $message-padding * 0.5;
     }
 
     #{$msg}#{$msg-start} {
       margin-top: $message-spacing;
     }
 
-    // consecutive messages from one author merge into a single card
-    #{$msg}:not(#{$msg-start}) {
-      margin-top: -$message-padding;
-      padding-top: 0.175rem;
-    }
-
-    #{$msg-contents} {
-      margin-left: 40px + $message-padding * 2;
-    }
-
-    #{$msg-avatar} {
-      left: $message-padding;
-      top: $message-padding;
-      margin-top: 0;
-    }
-
-    #{$msg-timestamp-alt} {
-      width: 40px + $message-padding;
-      display: flex;
-      justify-content: center;
-    }
-
-    #{$msg-reply} {
-      margin-left: $message-padding + 56px;
-    }
-
+    // Messages that mention you: amber tint plus a bar on the left edge.
+    // The bar is a background layer, so the card's rounded corner clips it.
+    // Discord's own bar is a square strip drawn on top and would stick out of
+    // the corner, so it is hidden.
     #{$msg}#{$msg-mentioned} {
-      background: var(--message-mentioned-background-default);
-      box-shadow: inset 2px 0 0 $yellow;
+      background:
+        linear-gradient(90deg, $mention-color $mention-bar-width, transparent $mention-bar-width),
+        var(--message-mentioned-background-default);
+    }
+
+    #{$msg}#{$msg-mentioned}::before {
+      display: none;
+    }
+
+    // Hover: a faint overlay on top of the whole row, so the card lightens
+    // evenly whatever it contains (text, stickers, embeds, system messages).
+    @if $message-hover > 0 {
+      #{$msg-item} {
+        position: relative;
+      }
+
+      #{$msg-item}:hover::after {
+        content: "";
+        position: absolute;
+        inset: 0 8px;
+        border-radius: $border-radius;
+        background: rgba(#fff, $message-hover);
+        pointer-events: none;
+      }
     }
   }
 }

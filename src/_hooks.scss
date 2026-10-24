@@ -20,6 +20,7 @@ $guild-header: 'header.header_f37cb1';
 $panels: '[class*="panels_"]';
 $panel-account: '.container__37e49';
 $page: 'div.page__5e434';
+$title-bar: '.bar_c38106'; // unchecked: name taken from the earlier backgrounds file
 
 // ---- Chat ------------------------------------------------------------------
 $chat: '.chat_f75fb0';
@@ -44,13 +45,12 @@ $channel-thread: '[class*="typeThread_"]';
 $msg: '[class*="cozy_"]';
 $msg-start: '[class*="groupStart_"]';
 $msg-mentioned: '[class*="mentioned_"]';
-$msg-contents: '[class*="cozy_"] [class*="contents_"]';
-$msg-avatar: '[class*="cozy_"] [class*="avatar_"]';
-$msg-timestamp-alt: '[class*="cozy_"] [class*="timestamp_"][class*="alt_"]';
-$msg-reply: '[class*="cozy_"] [class*="repliedMessage_"]';
+$msg-item: 'li[class*="messageListItem_"]'; // the list row around one message
 
 // ---- Members ---------------------------------------------------------------
 $members: '[class*="members_"]';
+$members-wrap: '[class*="membersWrap_"]';
+$members-container: '.container_c8ffbb';
 $member: '[class*="member_"]';
 
 // ---- Menus -----------------------------------------------------------------
