@@ -8,9 +8,17 @@ Supports the Dark, Darker and Midnight themes. Light mode is intentionally not s
 
 Server list, channel list, DM list and user panel, chat and message cards (with rounded mention bars and hover), member list, friends page and Active Now cards, voice-channel text chat, forum post cards, profiles, context menus and the User Settings pages. Everything else follows Discord's own variables, which the theme recolours.
 
-## Install
+## Download
 
-Download `MinimalCord.theme.css` from the latest build (the GitHub Actions workflow produces it), drop it into Vencord's themes folder and enable it in Vencord's Themes tab.
+- **Vencord:** add this link under Online Themes in Vencord's Themes tab, or download the file and put it in the themes folder:
+
+  ```
+  https://raw.githubusercontent.com/MEWPASCO/MinimalCord-Reborn/deploy/MinimalCord.theme.css
+  ```
+
+- **BetterDiscord:** download `MinimalCord.theme.css` from the link above and put it in BetterDiscord's themes folder (the header at the top of the file works for both clients).
+
+The GitHub workflow builds the file. If your workflow publishes to a different branch than `deploy`, adjust the link.
 
 For the Inter font, add this link under Online Themes in the same tab. Without it Discord uses its own font:
 

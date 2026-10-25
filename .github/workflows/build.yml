@@ -2,40 +2,42 @@ name: Build MinimalCord-Reborn SCSS
 
 on:
   push:
-    branches:
-      - main
-      - master
+    branches: [main]
     paths:
-      - 'src/**'
-      - 'package.json'
-      - '.github/workflows/build.yml'
-  workflow_dispatch: # Lets you trigger a build manually from the Actions tab anytime
+      - "src/**"
+      - "package.json"
+      - "package-lock.json"
+  workflow_dispatch:
 
 permissions:
-  contents: write # Gives the bot permission to commit the compiled CSS back to your repo
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: 📥 Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: 🟢 Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: 22
 
-      - name: 📦 Install Dart Sass
-        run: npm install
+      - name: Install dependencies
+        run: npm ci
 
-      - name: 🛠️ Compile SCSS to CSS
+      - name: Compile SCSS to CSS
         run: npm run build
 
-      - name: 🚀 Commit & Push Compiled Theme
+      # The built file goes to its own "deploy" branch, never to main, so
+      # local builds and the workflow can no longer conflict.
+      - name: Publish to deploy branch
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add dist/
-          git diff --staged --quiet || (git commit -m "⚡ Auto-build MinimalCord.theme.css [skip ci]" && git push)
+          cd dist
+          git init -b deploy
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f MinimalCord.theme.css
+          git commit -m "Build ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" deploy
