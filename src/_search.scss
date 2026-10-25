@@ -1,0 +1,56 @@
+// Search results panel: same surface as the chat, results as cards.
+
+@use "config" as *;
+@use "palette" as *;
+@use "hooks" as *;
+
+html {
+  :is(#{$search-panel}):is(#{$search-panel}) {
+    --background-base-lowest: #{$bg};
+    --background-base-lower: #{$bg};
+    background-color: $bg;
+    border-color: transparent;
+  }
+
+  // faint line between the chat and the results page
+  :is(#{$search-panel}):is(#{$search-panel}) {
+    border-left: 1px solid rgba(#fff, 0.05);
+  }
+
+  // each result block is a normal message card
+  #{$search-card} {
+    padding-top: 8px; // space above "# general" / folder name
+    background: $bg-alt;
+    border-color: transparent;
+    border-radius: $border-radius;
+    box-shadow: none;
+  }
+
+  // the "# general" row had its own darker fill and stuck out of the card
+  #{$search-group-header} {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  // breathing room so the first block does not touch the Filters / Sort bar
+  :is(#{$search-panel}):is(#{$search-panel}) > :first-child {
+    margin-top: 8px;
+  }
+
+  // auto-hiding scrollbar for the results scroller. Discord sets the standard
+  // scrollbar-color here, which makes Chrome ignore the ::-webkit-scrollbar
+  // rules in _base.scss, so the standard properties are used instead.
+  :is(#{$search-panel}),
+  :is(#{$search-panel}) [class*="scroller_"],
+  :is(#{$search-panel}) [class*="scrollerBase_"] {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+
+  :is(#{$search-panel}):hover,
+  :is(#{$search-panel}) [class*="scroller_"]:hover,
+  :is(#{$search-panel}) [class*="scrollerBase_"]:hover {
+    scrollbar-color: #{$bg-light} transparent;
+  }
+}

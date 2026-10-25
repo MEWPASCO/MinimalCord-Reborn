@@ -78,3 +78,6 @@ $voice-chat: '.container__01ae2, [class*="chatLayerWrapper_"], .chat_ee72fa'; //
 $forum-card: '[class*="mainCard_"], [class*="outlineCard_"], [class*="forumPost_"], [class*="card_"][class*="forum"]';
 $settings-nav: '[class*="sectionList_"]'; // left page list in User Settings (checked in a DOM dump: ul.sectionList__409aa)
 $settings-item: '[class*="sectionList_"] [class*="item_"]:not([class*="selected_"])'; // one unselected page (div.item_caf372)
+$search-panel: '[class*="searchResultsWrap_"], [class*="searchResultsPanel_"], [class*="searchResults_"]'; // right-hand search results (guess)
+$search-card: '[class*="searchResult_"], [class*="searchResultGroup_"]'; // one result block (guess)
+$search-group-header: '[class*="searchResult_"] [class*="channelName_"], [class*="searchResult_"] [class*="header_"], [class*="searchResultGroup_"] [class*="header_"]'; // "# general | folder" row on top of a result block (guess)

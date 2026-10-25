@@ -55,6 +55,7 @@ writes `dist/MinimalCord.theme.css`. `dist/` is git-ignored because the GitHub w
 | `_chat.scss` | Channel header and message box |
 | `_forums.scss` | Voice-channel chat surface and forum post cards |
 | `_settings.scss` | Brighter unselected page names in User Settings |
+| `_search.scss` | Search results panel and result cards |
 | `_messages.scss` | Message cards, mentions, code blocks |
 | `_members.scss` | Member list |
 | `_menus.scss` | Context menu highlight |
