@@ -1,0 +1,41 @@
+// Voice-channel text chat and forum post cards.
+
+@use "config" as *;
+@use "palette" as *;
+@use "hooks" as *;
+
+html {
+  // text chat inside a voice channel: same surface as a normal text channel
+  #{$voice-chat} {
+    --background-base-lowest: #{$bg};
+    --background-base-lower: #{$bg};
+    --chat-background-default: #{$bg};
+    background-color: $bg;
+    border-color: transparent;
+  }
+
+  // the panel itself had a 1px transparent frame; keep it, but no line
+  .chat_ee72fa::before {
+    content: none;
+  }
+
+  // forum post cards: flat card, lighter on hover, lightest when selected
+  #{$forum-card} {
+    background: $bg-alt;
+    border: none;
+    border-radius: $border-radius;
+    box-shadow: none;
+    transition: none;
+  }
+
+  #{$forum-card}:hover {
+    background: mix($bg-alt, $bg-light-alt, 50%);
+  }
+
+  #{$forum-card}[class*="selected"],
+  #{$forum-card}[class*="active"],
+  #{$forum-card}[aria-selected="true"] {
+    background: $bg-light-alt;
+    border: none;
+  }
+}

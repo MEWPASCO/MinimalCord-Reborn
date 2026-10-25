@@ -1,0 +1,21 @@
+// Settings: unselected page names were drawn in a very dark muted colour.
+// Brighten them inside the settings page list only; selected page is untouched.
+
+@use "palette" as *;
+@use "hooks" as *;
+
+html {
+  #{$settings-nav} {
+    --text-muted: #{$text-dim};
+    --interactive-normal: #{$text-dim};
+    --interactive-muted: #{$text-dim};
+  }
+
+  #{$settings-item} {
+    color: $text-dim;
+  }
+
+  #{$settings-item}:hover {
+    color: $text-focus;
+  }
+}

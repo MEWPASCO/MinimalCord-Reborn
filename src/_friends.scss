@@ -6,26 +6,39 @@
 @use "hooks" as *;
 
 html {
-  // friends list: no line between people
-  #{$friend-row},
-  #{$friend-row}::before,
-  #{$friend-row}::after {
-    border: none;
-    box-shadow: none;
-  }
-
-  // Active Now: no dividers, no separate header fill
-  #{$now-column},
-  #{$now-parts} {
+  // Discord draws these dividers with its translucent grey border variables;
+  // blank them on the friends page only (search bar etc. keep their look)
+  #{$friends-columns} {
+    --border-subtle: transparent;
+    --border-normal: transparent;
+    --border-faint: transparent;
+    --border-strong: transparent;
+    --divider: transparent;
+    --background-modifier-accent: transparent;
     border-color: transparent;
     box-shadow: none;
   }
 
+  // friend rows: no line between people (row, its children and pseudo lines)
+  #{$friend-row},
+  #{$friend-row} > *,
+  #{$friend-row}::before,
+  #{$friend-row}::after {
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  // Active Now: no dividers between groups
   #{$now-parts} {
+    border-color: transparent;
+    box-shadow: none;
     background-color: transparent;
   }
 
-  // the old card guesses: one colour for the whole card
+  // each Active Now entry is its own card, like a message card
+  #{$now-column} [class*="card_"],
+  #{$now-column} [class*="itemCard_"],
+  #{$now-column} [class*="activity_"],
   #{$activity-card} {
     background: $bg-alt;
     border: none;
@@ -33,6 +46,9 @@ html {
     overflow: hidden;
   }
 
+  #{$now-column} [class*="card_"]:hover,
+  #{$now-column} [class*="itemCard_"]:hover,
+  #{$now-column} [class*="activity_"]:hover,
   #{$activity-card}:hover {
     background: $bg-light-alt;
   }

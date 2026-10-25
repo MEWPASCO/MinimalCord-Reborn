@@ -71,3 +71,10 @@ $member: '[class*="member_"]';
 
 // ---- Menus -----------------------------------------------------------------
 $menu-item: '[role="menu"] [role^="menuitem"][class*="focused_"]:not([class*="colorDanger_"])';
+
+// ---- added: friends dividers, voice-channel chat, forum cards (hash-proof guesses) ----
+$friends-columns: '[class*="peopleColumn_"], [class*="nowPlayingColumn_"]';
+$voice-chat: '.container__01ae2, [class*="chatLayerWrapper_"], .chat_ee72fa'; // text chat beside a voice call (checked: container__01ae2 paints $bg-dark)
+$forum-card: '[class*="mainCard_"], [class*="outlineCard_"], [class*="forumPost_"], [class*="card_"][class*="forum"]';
+$settings-nav: '[class*="sectionList_"]'; // left page list in User Settings (checked in a DOM dump: ul.sectionList__409aa)
+$settings-item: '[class*="sectionList_"] [class*="item_"]:not([class*="selected_"])'; // one unselected page (div.item_caf372)

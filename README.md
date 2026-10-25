@@ -43,6 +43,8 @@ https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap
 | `_friends.scss` | Active Now cards on the friends page |
 | `_profiles.scss` | Hides the scrollbar under the profile tabs |
 | `_chat.scss` | Channel header and message box |
+| `_forums.scss` | Voice-channel chat surface and forum post cards |
+| `_settings.scss` | Brighter unselected page names in User Settings |
 | `_messages.scss` | Message cards, mentions, code blocks |
 | `_members.scss` | Member list |
 | `_menus.scss` | Context menu highlight |
