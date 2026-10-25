@@ -272,7 +272,6 @@ html :is([class*=privateChannels_], nav[aria-label="Direct Messages"]):is([class
   background-color: hsl(218, 15%, 11%);
 }
 
-<<<<<<< HEAD
 html [class*=peopleColumn_], html [class*=nowPlayingColumn_] {
   --border-subtle: transparent;
   --border-normal: transparent;
@@ -287,21 +286,10 @@ html [class*=peopleListItem_],
 html [class*=peopleListItem_] > *,
 html [class*=peopleListItem_]::before,
 html [class*=peopleListItem_]::after {
-=======
-html [class*=peopleListItem_],
-html [class*=peopleListItem_]::before,
-html [class*=peopleListItem_]::after {
-  border: none;
-  box-shadow: none;
-}
-html [class*=nowPlayingColumn_],
-html [class*=nowPlayingColumn_] [class*=section_], html [class*=nowPlayingColumn_] [class*=header_], html [class*=nowPlayingColumn_] [class*=wrapper_] {
->>>>>>> 98b2ba6a76f2daca84fa49d0032b4e69e36cd6d7
   border-color: transparent;
   box-shadow: none;
 }
 html [class*=nowPlayingColumn_] [class*=section_], html [class*=nowPlayingColumn_] [class*=header_], html [class*=nowPlayingColumn_] [class*=wrapper_] {
-<<<<<<< HEAD
   border-color: transparent;
   box-shadow: none;
   background-color: transparent;
@@ -309,22 +297,15 @@ html [class*=nowPlayingColumn_] [class*=section_], html [class*=nowPlayingColumn
 html [class*=nowPlayingColumn_] [class*=card_],
 html [class*=nowPlayingColumn_] [class*=itemCard_],
 html [class*=nowPlayingColumn_] [class*=activity_],
-=======
-  background-color: transparent;
-}
->>>>>>> 98b2ba6a76f2daca84fa49d0032b4e69e36cd6d7
 html .wrapper__00943 {
   background: hsl(218, 15%, 13%);
   border: none;
   border-radius: 5px;
   overflow: hidden;
 }
-<<<<<<< HEAD
 html [class*=nowPlayingColumn_] [class*=card_]:hover,
 html [class*=nowPlayingColumn_] [class*=itemCard_]:hover,
 html [class*=nowPlayingColumn_] [class*=activity_]:hover,
-=======
->>>>>>> 98b2ba6a76f2daca84fa49d0032b4e69e36cd6d7
 html .wrapper__00943:hover {
   background: hsl(218, 15%, 14.5%);
 }
