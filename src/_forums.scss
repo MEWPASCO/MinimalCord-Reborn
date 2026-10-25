@@ -1,5 +1,6 @@
 // Voice-channel text chat and forum post cards.
 
+@use "sass:color";
 @use "config" as *;
 @use "palette" as *;
 @use "hooks" as *;
@@ -29,7 +30,7 @@ html {
   }
 
   #{$forum-card}:hover {
-    background: mix($bg-alt, $bg-light-alt, 50%);
+    background: color.mix($bg-alt, $bg-light-alt, 50%);
   }
 
   #{$forum-card}[class*="selected"],

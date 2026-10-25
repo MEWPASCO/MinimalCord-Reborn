@@ -183,6 +183,10 @@
   border-radius: 5px !important;
   border: none !important;
   background-clip: content-box !important;
+  background: transparent !important;
+}
+
+:hover::-webkit-scrollbar-thumb {
   background: hsl(218, 15%, 16%) !important;
 }
 
@@ -204,6 +208,9 @@ html nav.container__2637a {
 html [class*=sidebarList_] {
   border: none;
   border-radius: 0;
+}
+html [class*=sidebarList_] > nav {
+  background: hsl(218, 15%, 11%);
 }
 html header.header_f37cb1 {
   background: transparent;
@@ -258,6 +265,62 @@ html .wrapper__2ea32[class*=modeSelected_]::before {
   z-index: 1;
 }
 
+html :is([class*=privateChannels_], nav[aria-label="Direct Messages"]):is([class*=privateChannels_], nav[aria-label="Direct Messages"]):is([class*=privateChannels_], nav[aria-label="Direct Messages"]) {
+  --text-muted: hsl(218, 10%, 55%);
+  --background-base-lowest: hsl(218, 15%, 11%);
+  --app-frame-background: hsl(218, 15%, 11%);
+  background-color: hsl(218, 15%, 11%);
+}
+
+html [class*=peopleColumn_], html [class*=nowPlayingColumn_] {
+  --border-subtle: transparent;
+  --border-normal: transparent;
+  --border-faint: transparent;
+  --border-strong: transparent;
+  --divider: transparent;
+  --background-modifier-accent: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+html [class*=peopleListItem_],
+html [class*=peopleListItem_] > *,
+html [class*=peopleListItem_]::before,
+html [class*=peopleListItem_]::after {
+  border-color: transparent;
+  box-shadow: none;
+}
+html [class*=nowPlayingColumn_] [class*=section_], html [class*=nowPlayingColumn_] [class*=header_], html [class*=nowPlayingColumn_] [class*=wrapper_] {
+  border-color: transparent;
+  box-shadow: none;
+  background-color: transparent;
+}
+html [class*=nowPlayingColumn_] [class*=card_],
+html [class*=nowPlayingColumn_] [class*=itemCard_],
+html [class*=nowPlayingColumn_] [class*=activity_],
+html .wrapper__00943 {
+  background: hsl(218, 15%, 13%);
+  border: none;
+  border-radius: 5px;
+  overflow: hidden;
+}
+html [class*=nowPlayingColumn_] [class*=card_]:hover,
+html [class*=nowPlayingColumn_] [class*=itemCard_]:hover,
+html [class*=nowPlayingColumn_] [class*=activity_]:hover,
+html .wrapper__00943:hover {
+  background: hsl(218, 15%, 14.5%);
+}
+html .section__00943 {
+  background: transparent;
+  border: none;
+}
+
+html [class*=tabListScroller_], html [role=tablist] {
+  scrollbar-width: none;
+}
+html [class*=tabListScroller_], html [role=tablist]::-webkit-scrollbar {
+  display: none;
+}
+
 html .chat_f75fb0,
 html .container__9293f {
   background: hsl(218, 15%, 11%);
@@ -278,6 +341,9 @@ html .chat_f75fb0 .content_f75fb0 {
 html [class*=chatGradient_] {
   display: none;
 }
+html [class*=scrollerSpacer_] {
+  height: 26px;
+}
 html [class*=channelTextArea_],
 html [class*=scrollableContainer_] {
   background: hsl(218, 15%, 13%);
@@ -291,6 +357,45 @@ html [class*=channelTextArea_] [class*=placeholder_] {
   font-size: 12px;
 }
 
+html .container__01ae2, html [class*=chatLayerWrapper_], html .chat_ee72fa {
+  --background-base-lowest: hsl(218, 15%, 11%);
+  --background-base-lower: hsl(218, 15%, 11%);
+  --chat-background-default: hsl(218, 15%, 11%);
+  background-color: hsl(218, 15%, 11%);
+  border-color: transparent;
+}
+html .chat_ee72fa::before {
+  content: none;
+}
+html [class*=mainCard_], html [class*=outlineCard_], html [class*=forumPost_], html [class*=card_][class*=forum] {
+  background: hsl(218, 15%, 13%);
+  border: none;
+  border-radius: 5px;
+  box-shadow: none;
+  transition: none;
+}
+html [class*=mainCard_], html [class*=outlineCard_], html [class*=forumPost_], html [class*=card_][class*=forum]:hover {
+  background: rgb(11.6875%, 13.2%, 15.8125%);
+}
+html [class*=mainCard_], html [class*=outlineCard_], html [class*=forumPost_], html [class*=card_][class*=forum][class*=selected],
+html [class*=mainCard_], html [class*=outlineCard_], html [class*=forumPost_], html [class*=card_][class*=forum][class*=active],
+html [class*=mainCard_], html [class*=outlineCard_], html [class*=forumPost_], html [class*=card_][class*=forum][aria-selected=true] {
+  background: hsl(218, 15%, 14.5%);
+  border: none;
+}
+
+html [class*=sectionList_] {
+  --text-muted: hsl(218, 10%, 55%);
+  --interactive-normal: hsl(218, 10%, 55%);
+  --interactive-muted: hsl(218, 10%, 55%);
+}
+html [class*=sectionList_] [class*=item_]:not([class*=selected_]) {
+  color: hsl(218, 10%, 55%);
+}
+html [class*=sectionList_] [class*=item_]:not([class*=selected_]):hover {
+  color: #fff;
+}
+
 html [class*=cozy_] {
   background: hsl(218, 15%, 13%);
   border-radius: 5px;
@@ -300,6 +405,7 @@ html [class*=cozy_] {
 }
 html [class*=cozy_][class*=groupStart_] {
   margin-top: 10px;
+  padding-top: 6px;
 }
 html [class*=cozy_][class*=mentioned_] {
   background: linear-gradient(90deg, rgb(234, 152, 0) 2px, transparent 2px), var(--message-mentioned-background-default);
