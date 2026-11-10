@@ -16,7 +16,7 @@ html {
   }
 
   // the panel itself had a 1px transparent frame; keep it, but no line
-  .chat_ee72fa::before {
+  #{$voice-chat-panel}::before {
     content: none;
   }
 

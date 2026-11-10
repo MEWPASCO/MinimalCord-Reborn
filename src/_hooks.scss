@@ -2,25 +2,44 @@
 // When a Discord update breaks part of the UI, this is the only file that
 // needs new names.
 //
-// Two kinds of hook:
+// Three kinds of hook:
 //   [class*="name_"]   matches the name and ignores the hash that changes every
 //                      build. Used whenever the name is distinctive enough.
-//   .name__hash        exact class. Used when the name is too generic to match
-//                      on its own (container, wrapper, header, link...). These
-//                      were checked against the DOM dump of 2026-10-23, or come
-//                      from the original MinimalCord and are marked "unchecked".
+//                      Careful: it also matches the end of longer names
+//                      ("bar_" matches "toolbar_").
+//   exact(name)        matches a class that IS the name plus a hash, and nothing
+//                      longer: exact(bar) matches "bar_3zSH5d" but not
+//                      "toolbar_xxxxxx". Hash-proof. Use it when the name is
+//                      generic but not too generic (chat, page, bar, form).
+//   structure          for names too generic even for exact() (container,
+//                      wrapper, header, link...): anchor on a hash-proof parent
+//                      or on a stable attribute (id, data-list-item-id, role)
+//                      instead of the hash. No hook in this file contains a hash
+//                      any more, so a Discord update should not break them
+//                      unless it renames the parent or restructures the DOM.
+//
+// All hooks below were checked against a DOM dump of 2026-11-10.
+//
+// Format change in Discord's 2026-11-10 update: class names used to look like
+// "name__f75fb0" (5-6 hex characters); they now look like "name_z_gUBg" (always
+// 6 mixed-case characters that may contain _ and -). Hooks that expect a double
+// underscore ("name__") no longer match anything.
+
+@function exact($name) {
+  @return ':is([class^="#{$name}_"], [class*=" #{$name}_"])';
+}
 
 // ---- App frame -------------------------------------------------------------
 $guilds: 'nav[class*="guilds_"]';
 $guilds-scroll: 'nav[class*="guilds_"] [class*="scrollerBase_"]';
-$sidebar: '.sidebar__5e434';
+$sidebar: 'div#{exact(sidebar)}'; // div.sidebar_pog62O (settings has aside.sidebar_..., left alone)
 $sidebar-list: '[class*="sidebarList_"]';
-$channel-nav: 'nav.container__2637a';
-$guild-header: 'header.header_f37cb1';
+$channel-nav: '#{$sidebar-list} > nav'; // nav.container_H5ozaj in a server, nav.privateChannels_u88IQl in DMs
+$guild-header: '#{$sidebar-list} header'; // header.header_XH4OpX
 $panels: '[class*="panels_"]';
-$panel-account: '.container__37e49';
-$page: 'div.page__5e434';
-$title-bar: '.bar_c38106'; // unchecked: name taken from the earlier backgrounds file
+$panel-account: '#{$panels} > #{exact(container)}'; // div.container_g6VwXp, the account bar; a direct child of section.panels_ (its siblings are panel_ and wrapper_)
+$page: 'div#{exact(page)}'; // checked 2026-11-10: div.page_pog62O
+$title-bar: '#{exact(bar)}'; // checked 2026-11-10: bar_3zSH5d
 
 // ---- Direct messages -------------------------------------------------------
 // The whole left panel in the DM view: search box, Friends / Nitro / Shop /
@@ -30,29 +49,36 @@ $dm-sidebar: '[class*="privateChannels_"], nav[aria-label="Direct Messages"]';
 // ---- Friends page and profiles --------------------------------------------
 // Unchecked: both come from the original MinimalCord, which was updated for the
 // current client shortly before this rewrite.
-$activity-card: '.wrapper__00943';    // one "Active Now" card
-$activity-section: '.section__00943'; // header / row inside that card
+$activity-card: '[class*="nowPlayingColumn_"] [class*="itemCard_"]'; // one "Active Now" card (div.itemCard_-7KzVR.wrapper_o3hXTo)
+$activity-section: '[class*="nowPlayingColumn_"] section#{exact(section)}'; // section inside that card (section.section_o3hXTo)
 $friend-row: '[class*="peopleListItem_"]';   // one row in the friends list
 $now-column: '[class*="nowPlayingColumn_"]'; // whole Active Now column
 $now-parts: '[class*="nowPlayingColumn_"] [class*="section_"], [class*="nowPlayingColumn_"] [class*="header_"], [class*="nowPlayingColumn_"] [class*="wrapper_"]'; // cards, headers, rows inside it
 $tab-scroller: '[class*="tabListScroller_"], [role="tablist"]'; // Board / Activity / Mutual tabs on profiles
 
 // ---- Chat ------------------------------------------------------------------
-$chat: '.chat_f75fb0';
-$chat-inner: '.chat_f75fb0 .content_f75fb0';
-$chat-header: '.container__9293f';
-$chat-header-children: '.children__9293f';
+// checked 2026-11-10: div.chat_z_gUBg > div.content_z_gUBg > main.chatContent_z_gUBg
+// (the voice-channel text panel is also named "chat_...", so $chat covers both
+// and they get the same background)
+$chat: '#{exact(chat)}';
+$chat-inner: '#{exact(chat)} > #{exact(content)}';
+// section.title_z_gUBg.container_ybUK7Z in a text channel, section.headerBar_neq5ug.container_ybUK7Z in a call,
+// section.container_ybUK7Z in the voice-channel text panel
+$chat-header: '#{exact(subtitleContainer)} > section, [class*="chatLayerWrapper_"] section#{exact(container)}';
+$chat-header-children: ':is(#{$chat-header}) > *'; // div.upperContainer_ybUK7Z
 $chat-content: '[class*="chatContent_"]';
 $chat-gradient: '[class*="chatGradient_"]';
 $chat-spacer: '[class*="scrollerSpacer_"]'; // unchecked: empty block after the last message in older clients
-$chat-form: 'form.form_f75fb0';
+$chat-form: 'form#{exact(form)}'; // checked 2026-11-10: form.form_z_gUBg
 $text-area: '[class*="channelTextArea_"]';
 $text-area-box: '[class*="scrollableContainer_"]'; // unchecked
 $text-placeholder: '[class*="channelTextArea_"] [class*="placeholder_"]'; // unchecked
 
 // ---- Channel list ----------------------------------------------------------
-$channel-row: '.wrapper__2ea32';
-$channel-link: '.link__2ea32';
+// div.wrapper_TNyK-N > div > a.link_TNyK-N inside #channels. The :has() keeps other wrapper_ elements
+// (voice participants, categories) out of it.
+$channel-row: '#channels #{exact(wrapper)}:has(> div > a[data-list-item-id^="channels___"])';
+$channel-link: 'a[data-list-item-id^="channels___"]';
 $channel-selected: '[class*="modeSelected_"]'; // unchecked
 $channel-muted: '[class*="modeMuted_"]';       // unchecked
 $channel-thread: '[class*="typeThread_"]';
@@ -66,7 +92,7 @@ $msg-item: 'li[class*="messageListItem_"]'; // the list row around one message
 // ---- Members ---------------------------------------------------------------
 $members: '[class*="members_"]';
 $members-wrap: '[class*="membersWrap_"]';
-$members-container: '.container_c8ffbb';
+$members-container: '#{exact(content)} > #{exact(container)}'; // div.container_86es0b around aside.membersWrap_, inside div.content_z_gUBg
 $member: '[class*="member_"]';
 
 // ---- Menus -----------------------------------------------------------------
@@ -74,10 +100,12 @@ $menu-item: '[role="menu"] [role^="menuitem"][class*="focused_"]:not([class*="co
 
 // ---- added: friends dividers, voice-channel chat, forum cards (hash-proof guesses) ----
 $friends-columns: '[class*="peopleColumn_"], [class*="nowPlayingColumn_"]';
-$voice-chat: '.container__01ae2, [class*="chatLayerWrapper_"], .chat_ee72fa'; // text chat beside a voice call (checked: container__01ae2 paints $bg-dark)
+// text chat beside a voice call. chat_fjXxyy sits in container_FrbQJp in chatLayerWrapper_FrbQJp
+$voice-chat-panel: '[class*="chatLayerWrapper_"] #{exact(chat)}';
+$voice-chat: '[class*="chatLayerWrapper_"], [class*="chatLayerWrapper_"] > #{exact(container)}, #{$voice-chat-panel}';
 $forum-card: '[class*="mainCard_"], [class*="outlineCard_"], [class*="forumPost_"], [class*="card_"][class*="forum"]';
 $settings-nav: '[class*="sectionList_"]'; // left page list in User Settings (checked in a DOM dump: ul.sectionList__409aa)
-$settings-item: '[class*="sectionList_"] [class*="item_"]:not([class*="selected_"])'; // one unselected page (div.item_caf372)
+$settings-item: '[class*="sectionList_"] [class*="item_"]:not([class*="selected_"]), [class*="sectionList_"] [role="tab"]:not([aria-selected="true"])'; // one unselected page (div.item_caf372)
 $search-panel: '[class*="searchResultsWrap_"], [class*="searchResultsPanel_"], [class*="searchResults_"]'; // right-hand search results (guess)
 $search-card: '[class*="searchResult_"], [class*="searchResultGroup_"]'; // one result block (guess)
 $search-group-header: '[class*="searchResult_"] [class*="channelName_"], [class*="searchResult_"] [class*="header_"], [class*="searchResultGroup_"] [class*="header_"]'; // "# general | folder" row on top of a result block (guess)
