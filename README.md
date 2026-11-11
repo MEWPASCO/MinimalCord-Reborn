@@ -2,6 +2,14 @@
 > # ![Maintained with AI](https://img.shields.io/badge/Maintained_with-AI-8A2BE2?style=for-the-badge&logo=anthropic&logoColor=white)
 > This project is developed and maintained with the help of AI (Claude). I review and test every change myself before it's pushed. If something breaks or looks off, please open an issue. Constructive bug reports are always welcome!
 
+# Contact
+
+[discord]: https://discord.gg/avia
+
+Come hang out in our community for support, **Destiny 2** guides, archives, and more!
+
+[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)][discord]
+
 # MinimalCord Reborn
 
 A lightweight, dark-only rewrite of [MinimalCord](https://github.com/DiscordStyles/MinimalCord) by Gibbu for the current Discord client and [Vencord](https://vencord.dev). It keeps the original's flat, rounded-card look, but is built from a small set of colour-variable overrides and a few selectors instead of a large pile of rules, so it stays light on your PC.
